@@ -1,11 +1,19 @@
-const menuButton = document.querySelector('#menu');
+// navigation.js — Responsive hamburger menu toggle
 
-const navigation = document.querySelector('.navigation');
+const menuToggle = document.getElementById('menuToggle');
+const primaryNav = document.getElementById('primary-nav');
 
-menuButton.addEventListener('click', () => {
+if (menuToggle && primaryNav) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = primaryNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
 
-    navigation.classList.toggle('open');
-
-    menuButton.classList.toggle('open');
-
-});
+  // Close menu when a nav link is clicked on mobile
+  primaryNav.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      primaryNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}

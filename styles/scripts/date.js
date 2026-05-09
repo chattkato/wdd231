@@ -1,6 +1,12 @@
-const year = document.querySelector('#year');
+// date.js — Dynamic copyright year and last modified date
 
-year.textContent = new Date().getFullYear();
+const yearEl = document.getElementById('copyright-year');
+const lastModEl = document.getElementById('lastModified');
 
-document.querySelector('#lastModified').textContent =
-`Last Modified: ${document.lastModified}`;
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
+
+if (lastModEl) {
+  lastModEl.textContent = `Last Modified: ${document.lastModified}`;
+}
