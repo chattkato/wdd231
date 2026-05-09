@@ -1,0 +1,41 @@
+@media screen and (min-width: 768px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    .navigation {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .navigation li {
+        margin: 0;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .hero,
+    .spotlights {
+        grid-column: 1 / 3;
+    }
+
+    .spotlight-container {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .spotlight {
+        flex: 1;
+    }
+}

@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
+    background-color: #0B3D91;
+    color: white;
+    padding: 1rem;
+}
+
+.logo h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+}
+
+/* NAVIGATION */
+
+#menu {
+    font-size: 1.5rem;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+#menu::before {
+    content: "☰";
+}
+
+#menu.open::before {
+    content: "✖";
+}
+
+.navigation {
+    list-style: none;
+    display: none;
+}
+
+.navigation.open {
+    display: block;
+}
+
+.navigation li {
+    margin: 1rem 0;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navigation a:hover {
+    color: #F4B400;
+}
+
+.active {
+    color: #F4B400;
+}
+
+/* HERO */
+
+.hero {
+    background-color: #0B3D91;
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #F4B400;
+    color: black;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* MAIN */
+
+main {
+    padding: 1rem;
+}
+
+.card,
+.spotlights {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.card h2,
+.spotlights h2 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.card ul {
+    padding-left: 1rem;
+}
+
+.spotlight {
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #0B3D91;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
