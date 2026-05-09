@@ -1,6 +1,6 @@
 /* ==========================================
-   WDD231 Course Home Page — larger.css
-   Media queries for wider viewports
+   Abuja Chamber of Commerce — larger.css
+   Responsive media queries (600px+, 900px+)
    ========================================== */
 
 /* ---- TABLET: 600px+ ---- */
@@ -11,22 +11,49 @@
   }
 
   main {
-    padding: 0 2rem 3rem;
+    padding: 2rem 2rem 3rem;
   }
 
-  .hero h1 {
-    font-size: 3.2rem;
+  main h1 {
+    font-size: 2.2rem;
   }
 
-  .course-grid {
-    grid-template-columns: 1fr 1fr;
+  .hero-section {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .hero-content {
+    flex: 1;
+  }
+
+  .hero-weather {
+    width: 200px;
+    flex-shrink: 0;
+  }
+
+  .spotlights-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .spotlight-card {
+    flex: 1 1 calc(50% - 0.65rem);
+    min-width: 0;
+  }
+
+  .event-item {
+    padding: 1.25rem 1.5rem;
   }
 }
 
 /* ---- DESKTOP: 900px+ ---- */
 @media (min-width: 900px) {
 
-  /* Nav: full horizontal */
   .hamburger {
     display: none;
   }
@@ -39,65 +66,36 @@
     order: unset;
     padding: 0;
     border-top: none;
-    gap: 0.25rem;
+    gap: 0.2rem;
   }
 
   .nav-link {
-    padding: 0.45rem 0.85rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.92rem;
   }
 
   .nav-link.active,
   .nav-link[aria-current="page"] {
-    color: var(--accent);
-    background: var(--accent-dim);
-    border-radius: var(--radius-sm);
+    border-radius: 6px;
   }
 
-  /* Hero two-column */
-  .hero {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4.5rem 0 3rem;
-    gap: 3rem;
+  main h1 {
+    font-size: 2.6rem;
   }
 
-  .hero-text {
-    max-width: 520px;
-  }
-
-  .hero h1 {
-    font-size: 3.8rem;
-  }
-
-  .badge-ring {
-    width: 180px;
-    height: 180px;
-    flex-shrink: 0;
-  }
-
-  .badge-course {
-    font-size: 2rem;
-  }
-
-  /* Two-column card row */
-  .two-col-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .spotlights-grid {
+    flex-wrap: nowrap;
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
   }
 
-  .two-col-cards .section-card {
-    margin-bottom: 0;
+  .spotlight-card {
+    flex: 1 1 calc(33.333% - 1rem);
   }
 
-  /* Course grid 3-col */
-  .course-grid {
-    grid-template-columns: 1fr 1fr 1fr;
+  .events-list {
+    gap: 1.25rem;
   }
 
-  /* Footer horizontal */
   .footer-inner {
     flex-direction: row;
     justify-content: space-between;
@@ -105,10 +103,23 @@
   }
 }
 
-/* ---- WIDE: 1200px+ ---- */
-@media (min-width: 1200px) {
+/* ---- WIDE: 1100px+ ---- */
+@media (min-width: 1100px) {
 
-  .hero h1 {
-    font-size: 4.5rem;
+  main h1 {
+    font-size: 3rem;
+  }
+
+  .hero-section {
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+
+  .hero-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
   }
 }

@@ -4,16 +4,17 @@ const menuToggle = document.getElementById('menuToggle');
 const primaryNav = document.getElementById('primary-nav');
 
 if (menuToggle && primaryNav) {
-  menuToggle.addEventListener('click', () => {
+
+  menuToggle.addEventListener('click', function () {
     const isOpen = primaryNav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  // Close menu when a nav link is clicked on mobile
-  primaryNav.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
+  primaryNav.querySelectorAll('.nav-link').forEach(function (link) {
+    link.addEventListener('click', function () {
       primaryNav.classList.remove('open');
       menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
+
 }

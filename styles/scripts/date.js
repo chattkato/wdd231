@@ -8,5 +8,5 @@ if (yearEl) {
 }
 
 if (lastModEl) {
-  lastModEl.textContent = `Last Modified: ${document.lastModified}`;
+  lastModEl.textContent = 'Last Modified: ' + document.lastModified;
 }
