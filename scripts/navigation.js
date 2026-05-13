@@ -1,20 +1,17 @@
-// navigation.js — Responsive hamburger menu toggle
+// navigation.js – responsive hamburger menu toggle
 
-const menuToggle = document.getElementById('menuToggle');
+const hamburger = document.getElementById('hamburger');
 const primaryNav = document.getElementById('primary-nav');
 
-if (menuToggle && primaryNav) {
+hamburger.addEventListener('click', () => {
+  const isOpen = primaryNav.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen.toString());
+});
 
-  menuToggle.addEventListener('click', function () {
-    const isOpen = primaryNav.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
+// Close nav when a link is clicked (good mobile UX)
+primaryNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    primaryNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
   });
-
-  primaryNav.querySelectorAll('.nav-link').forEach(function (link) {
-    link.addEventListener('click', function () {
-      primaryNav.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-}
+});

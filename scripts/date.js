@@ -1,12 +1,8 @@
-// date.js — Dynamic copyright year and last modified date
+// date.js – dynamic copyright year and last modified date
 
-const yearEl = document.getElementById('copyright-year');
-const lastModEl = document.getElementById('lastModified');
+const currentYear = new Date().getFullYear();
+document.getElementById('copyright').textContent =
+  `© ${currentYear} • Chatt • Abuja, Nigeria`;
 
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
-
-if (lastModEl) {
-  lastModEl.textContent = 'Last Modified: ' + document.lastModified;
-}
+document.getElementById('lastModified').textContent =
+  `Last Modification: ${document.lastModified}`;
