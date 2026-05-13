@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="WDD231 Web Frontend Development – Course Home Page for Chatt, a professional honing modern web skills." />
-  <meta name="author" content="Chatt" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WDD231 Web Frontend Development – Course Home Page for Chatt, a professional honing modern web skills.">
+  <meta name="author" content="Chatt">
   <title>WDD231 | Chatt's Course Home</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles/small.css" />
-  <link rel="stylesheet" href="styles/large.css" />
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/large.css">
 
   <script src="scripts/navigation.js" defer></script>
   <script src="scripts/date.js" defer></script>
@@ -49,6 +49,7 @@
   <main>
     <h1>Home</h1>
 
+    <!-- Section 1: About Me -->
     <section class="section-about" aria-labelledby="about-heading">
       <div class="about-text">
         <h2 id="about-heading">About Me</h2>
@@ -71,11 +72,12 @@
             width="300"
             height="300"
             loading="eager"
-          />
+          >
         </div>
       </div>
     </section>
 
+    <!-- Section 2: Web Certificate Courses -->
     <section class="section-courses" aria-labelledby="courses-heading">
       <h2 id="courses-heading">Web Certificate Courses</h2>
       <div class="filter-buttons" role="group" aria-label="Filter courses by type">
@@ -83,8 +85,21 @@
         <button class="filter-btn" data-filter="CSE" aria-pressed="false">CSE</button>
         <button class="filter-btn" data-filter="WDD" aria-pressed="false">WDD</button>
       </div>
-      <div id="course-list" aria-live="polite" aria-label="Course list"></div>
+      <div id="course-list" role="list" aria-live="polite"></div>
       <p class="credit-total" id="credit-total" aria-live="polite"></p>
+    </section>
+
+    <!-- Section 3: Program Overview -->
+    <section class="section-program" aria-labelledby="program-heading">
+      <h2 id="program-heading">Program Overview</h2>
+      <p>
+        This page is part of the Web and Computer Programming certificate at
+        Brigham Young University – Idaho. The program is designed to develop
+        practical frontend development skills through hands-on projects covering
+        HTML, CSS, JavaScript, and modern web standards. Each assignment builds
+        toward a professional portfolio demonstrating real-world competency in
+        responsive design, accessibility, and performance optimisation.
+      </p>
     </section>
 
   </main>

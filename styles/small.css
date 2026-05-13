@@ -184,6 +184,7 @@ h1::after {
   margin-bottom: 2.5rem;
 }
 
+/* --- About Text panel --- */
 .about-text {
   background: var(--clr-surface);
   border-radius: var(--radius);
@@ -191,8 +192,7 @@ h1::after {
   overflow: hidden;
 }
 
-.about-text h2,
-.about-photo h2 {
+.about-text h2 {
   font-family: var(--font-body);
   font-size: .8rem;
   font-weight: 600;
@@ -208,34 +208,45 @@ h1::after {
   font-size: .95rem;
 }
 
-/* --- About Photo --- */
+/* --- About Photo panel --- */
 .about-photo {
-  background: var(--clr-surface);
+  background: #ffffff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
   text-align: center;
 }
 
-.about-photo h2 { text-align: center; }
+.about-photo h2 {
+  font-family: var(--font-body);
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background-color: #1a1a2e;
+  color: #e8c97a;
+  padding: .55rem 1rem;
+  text-align: center;
+}
 
-/* --- Photo Wrapper & Image --- */
+/* --- Photo wrapper centres the image --- */
 .photo-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   background: #e8e5dc;
   padding: 1.5rem;
+  width: 100%;
 }
 
 .photo-wrapper img {
   display: block;
   width: 100%;
-  max-width: 280px;
+  max-width: 260px;
   height: auto;
-  border-radius: var(--radius);
-  object-fit: cover;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
   margin: 0 auto;
 }
 
@@ -334,6 +345,32 @@ h1::after {
   color: var(--clr-muted);
   text-align: center;
   font-style: italic;
+}
+
+/* --- Program Overview Section --- */
+.section-program {
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.section-program h2 {
+  font-family: var(--font-body);
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background-color: var(--clr-dark);
+  color: var(--clr-accent);
+  padding: .55rem 1rem;
+}
+
+.section-program p {
+  padding: 1rem 1.1rem;
+  font-size: .95rem;
+  color: var(--clr-text);
 }
 
 /* --- Footer --- */

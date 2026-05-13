@@ -48,14 +48,32 @@
 
   .about-text { flex: 2; }
 
-  /* --- About Photo: centred in its panel --- */
+  /* --- About Photo: centred inside its right panel --- */
   .about-photo {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    text-align: center;
   }
 
+  .about-photo h2 {
+    font-family: var(--font-body);
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background-color: #1a1a2e;
+    color: #e8c97a;
+    padding: .55rem 1rem;
+    text-align: center;
+  }
+
+  /* --- Photo wrapper centres the image --- */
   .photo-wrapper {
     flex: 1;
     display: flex;
@@ -63,16 +81,17 @@
     align-items: center;
     background: #e8e5dc;
     padding: 1.5rem;
+    width: 100%;
   }
 
   .photo-wrapper img {
     display: block;
     width: 100%;
-    max-width: 280px;
+    max-width: 260px;
     height: auto;
-    border-radius: var(--radius);
-    object-fit: cover;
     aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
     margin: 0 auto;
   }
 
