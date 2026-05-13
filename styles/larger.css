@@ -1,24 +1,25 @@
 /* =============================================
-   WDD231 – larger.css (768px+)
+   WDD231 – larger.css
    ============================================= */
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
 
-  /* ---------- Hide Hamburger ---------- */
+  /* ---------- HAMBURGER ---------- */
+
   #hamburger {
     display: none;
   }
 
-  /* ---------- Desktop Navigation ---------- */
+  /* ---------- NAVIGATION ---------- */
+
   #primary-nav {
     max-height: none;
     overflow: visible;
-
-    background-color: var(--clr-mid, #2d2d44);
   }
 
   #primary-nav ul {
     max-width: 1100px;
+
     margin: 0 auto;
     padding: 0 1.25rem;
 
@@ -28,29 +29,27 @@
   #primary-nav ul li a {
     padding: 0.85rem 1.25rem;
 
-    font-size: 0.9rem;
-
-    border-bottom: 3px solid transparent;
     border-left: none;
+    border-bottom: 3px solid transparent;
   }
 
   #primary-nav ul li a:hover,
   #primary-nav ul li a:focus-visible {
     padding-left: 1.25rem;
 
-    background-color: rgba(232, 201, 122, 0.12);
-
-    border-bottom-color: var(--clr-accent, #e8c97a);
+    border-bottom-color: #e8c97a;
+    border-bottom-color: var(--clr-accent);
   }
 
   #primary-nav ul li a.active {
-    background-color: rgba(232, 201, 122, 0.1);
-
     border-left: none;
-    border-bottom: 3px solid var(--clr-accent, #e8c97a);
+
+    border-bottom: 3px solid #e8c97a;
+    border-bottom: 3px solid var(--clr-accent);
   }
 
-  /* ---------- About Layout ---------- */
+  /* ---------- ABOUT ---------- */
+
   .section-about {
     flex-direction: row;
     align-items: stretch;
@@ -71,27 +70,28 @@
     flex: 1;
   }
 
-  /* ---------- Courses Grid ---------- */
+  /* ---------- COURSES ---------- */
+
   #course-list {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
 
     gap: 0.5rem;
   }
 
-  /* ---------- Footer ---------- */
+  /* ---------- FOOTER ---------- */
+
   footer {
     padding: 2rem 2rem 1.5rem;
-
-    justify-content: center;
   }
 }
 
 /* =============================================
-   Large Desktop (1024px+)
+   LARGE DESKTOP
    ============================================= */
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
 
   .header-inner {
     padding: 0.75rem 2rem;

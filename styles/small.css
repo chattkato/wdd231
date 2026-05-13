@@ -1,8 +1,10 @@
 /* =============================================
-   WDD231 – small.css (mobile-first, 320px+)
+   WDD231 – small.css
+   Mobile First Design
    ============================================= */
 
-/* ---------- Reset ---------- */
+/* ---------- RESET ---------- */
+
 *,
 *::before,
 *::after {
@@ -11,7 +13,8 @@
   padding: 0;
 }
 
-/* ---------- CSS Variables ---------- */
+/* ---------- ROOT VARIABLES ---------- */
+
 :root {
   --clr-bg: #f5f3ee;
   --clr-surface: #ffffff;
@@ -22,37 +25,46 @@
   --clr-muted: #6b6b7d;
   --clr-complete: #2e7d5a;
   --clr-complete-bg: #d4edda;
-  --clr-border: #ddd8cc;
 
   --font-display: "DM Serif Display", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-body: "DM Sans", Arial, sans-serif;
 
   --radius: 8px;
   --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  --transition: 200ms ease;
+  --transition: 0.2s ease;
 }
 
-/* ---------- Base ---------- */
+/* ---------- GLOBAL ---------- */
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   min-width: 320px;
-  background-color: var(--clr-bg, #f5f3ee);
-  color: var(--clr-text, #2c2c3a);
-  font-family: var(--font-body, sans-serif);
+  background-color: #f5f3ee;
+  background-color: var(--clr-bg);
+
+  color: #2c2c3a;
+  color: var(--clr-text);
+
+  font-family: Arial, sans-serif;
+  font-family: var(--font-body);
+
   font-size: 1rem;
   line-height: 1.65;
 }
 
-/* ---------- Header ---------- */
+/* ---------- HEADER ---------- */
+
 header {
   position: sticky;
   top: 0;
   z-index: 100;
 
-  background-color: var(--clr-dark, #1a1a2e);
+  background-color: #1a1a2e;
+  background-color: var(--clr-dark);
+
   color: #ffffff;
 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -61,6 +73,7 @@ header {
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
+
   padding: 0.75rem 1.25rem;
 
   display: flex;
@@ -68,7 +81,8 @@ header {
   justify-content: space-between;
 }
 
-/* ---------- Brand ---------- */
+/* ---------- BRAND ---------- */
+
 .brand {
   display: flex;
   align-items: center;
@@ -80,17 +94,22 @@ header {
 }
 
 .site-name {
-  font-family: var(--font-display, serif);
+  font-family: Georgia, serif;
+  font-family: var(--font-display);
+
   font-size: 1.3rem;
   letter-spacing: 0.02em;
+
   color: #ffffff;
 }
 
 .site-name .accent {
-  color: var(--clr-accent, #e8c97a);
+  color: #e8c97a;
+  color: var(--clr-accent);
 }
 
-/* ---------- Hamburger ---------- */
+/* ---------- HAMBURGER ---------- */
+
 #hamburger {
   display: flex;
   flex-direction: column;
@@ -98,37 +117,43 @@ header {
 
   padding: 0.45rem 0.55rem;
 
-  background: none;
+  background: transparent;
+
   border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: var(--radius, 8px);
+  border-radius: 8px;
+  border-radius: var(--radius);
 
   cursor: pointer;
 
-  transition:
-    border-color var(--transition, 200ms ease),
-    transform var(--transition, 200ms ease);
+  transition: border-color 0.2s ease;
+  transition: border-color var(--transition);
 }
 
 #hamburger:hover {
-  border-color: var(--clr-accent, #e8c97a);
+  border-color: #e8c97a;
+  border-color: var(--clr-accent);
 }
 
 #hamburger:focus-visible {
-  outline: 2px solid var(--clr-accent, #e8c97a);
+  outline: 2px solid #e8c97a;
+  outline: 2px solid var(--clr-accent);
+
   outline-offset: 2px;
 }
 
 #hamburger span {
   display: block;
+
   width: 22px;
   height: 2px;
 
   background: #ffffff;
+
   border-radius: 2px;
 
   transition:
-    transform var(--transition, 200ms ease),
-    opacity var(--transition, 200ms ease);
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 #hamburger[aria-expanded="true"] span:nth-child(1) {
@@ -143,12 +168,14 @@ header {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ---------- Navigation ---------- */
+/* ---------- NAVIGATION ---------- */
+
 #primary-nav {
   max-height: 0;
   overflow: hidden;
 
-  background-color: var(--clr-mid, #2d2d44);
+  background-color: #2d2d44;
+  background-color: var(--clr-mid);
 
   transition: max-height 0.4s ease;
 }
@@ -170,6 +197,7 @@ header {
   padding: 0.9rem 1.5rem;
 
   color: #dddddd;
+
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
@@ -177,55 +205,70 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   transition:
-    background-color var(--transition, 200ms ease),
-    color var(--transition, 200ms ease),
-    padding-left var(--transition, 200ms ease);
+    background-color 0.2s ease,
+    color 0.2s ease,
+    padding-left 0.2s ease;
 }
 
 #primary-nav ul li a:hover,
 #primary-nav ul li a:focus-visible {
   background-color: rgba(232, 201, 122, 0.12);
-  color: var(--clr-accent, #e8c97a);
+
+  color: #e8c97a;
+  color: var(--clr-accent);
+
   padding-left: 2rem;
 }
 
 #primary-nav ul li a.active {
   background-color: rgba(232, 201, 122, 0.18);
-  color: var(--clr-accent, #e8c97a);
 
-  border-left: 3px solid var(--clr-accent, #e8c97a);
+  color: #e8c97a;
+  color: var(--clr-accent);
+
+  border-left: 3px solid #e8c97a;
+  border-left: 3px solid var(--clr-accent);
 }
 
-/* ---------- Main ---------- */
+/* ---------- MAIN ---------- */
+
 main {
   max-width: 1100px;
   margin: 0 auto;
+
   padding: 1.5rem 1.25rem 3rem;
 }
 
 h1 {
   margin-bottom: 1.25rem;
 
-  font-family: var(--font-display, serif);
+  font-family: Georgia, serif;
+  font-family: var(--font-display);
+
   font-size: 2rem;
 
-  color: var(--clr-dark, #1a1a2e);
+  color: #1a1a2e;
+  color: var(--clr-dark);
 }
 
 h1::after {
   content: "";
 
   display: block;
+
   width: 50px;
   height: 3px;
 
   margin-top: 0.3rem;
 
-  background: var(--clr-accent, #e8c97a);
+  background: #e8c97a;
+  background: var(--clr-accent);
+
   border-radius: 2px;
 }
 
-/* ---------- About Section ---------- */
+/* ---------- ABOUT ---------- */
+
 .section-about {
   margin-bottom: 2.5rem;
 
@@ -234,39 +277,45 @@ h1::after {
   gap: 1rem;
 }
 
-/* ---------- Shared Card Styles ---------- */
 .about-text,
 .about-photo,
 .section-courses,
 .section-program {
   overflow: hidden;
 
-  background: var(--clr-surface, #ffffff);
-  border-radius: var(--radius, 8px);
+  background: #ffffff;
+  background: var(--clr-surface);
+
+  border-radius: 8px;
+  border-radius: var(--radius);
 
   box-shadow: var(--shadow);
 }
 
-/* ---------- Section Headers ---------- */
+/* ---------- HEADERS ---------- */
+
 .about-text h2,
 .about-photo h2,
 .section-courses h2,
 .section-program h2 {
   padding: 0.55rem 1rem;
 
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: var(--font-body, sans-serif);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  background-color: #1a1a2e;
+  background-color: var(--clr-dark);
+
+  color: #e8c97a;
+  color: var(--clr-accent);
 
   text-align: center;
 
-  background-color: var(--clr-dark, #1a1a2e);
-  color: var(--clr-accent, #e8c97a);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-/* ---------- About Text ---------- */
+/* ---------- TEXT ---------- */
+
 .about-text p,
 .section-program p {
   padding: 1rem 1.1rem;
@@ -274,13 +323,15 @@ h1::after {
   font-size: 0.95rem;
 }
 
-/* ---------- Photo ---------- */
+/* ---------- PHOTO ---------- */
+
 .about-photo {
   text-align: center;
 }
 
 .photo-wrapper {
   width: 100%;
+
   padding: 1.5rem;
 
   display: flex;
@@ -297,13 +348,14 @@ h1::after {
   max-width: 260px;
   height: auto;
 
-  aspect-ratio: 1 / 1;
   object-fit: cover;
 
-  border-radius: var(--radius, 8px);
+  border-radius: 8px;
+  border-radius: var(--radius);
 }
 
-/* ---------- Courses ---------- */
+/* ---------- COURSES ---------- */
+
 .section-courses {
   padding-bottom: 1.25rem;
 }
@@ -322,41 +374,39 @@ h1::after {
   padding: 0.5rem;
 
   background: #eeeeee;
-  color: var(--clr-text, #2c2c3a);
+
+  color: #2c2c3a;
+  color: var(--clr-text);
 
   border: 2px solid transparent;
-  border-radius: var(--radius, 8px);
+  border-radius: 8px;
+  border-radius: var(--radius);
 
   font-size: 0.88rem;
   font-weight: 600;
-  font-family: var(--font-body, sans-serif);
 
   cursor: pointer;
 
-  transition:
-    background-color var(--transition, 200ms ease),
-    border-color var(--transition, 200ms ease),
-    color var(--transition, 200ms ease);
+  transition: all 0.2s ease;
 }
 
 .filter-btn:hover {
   background: #e0dcd2;
-  border-color: var(--clr-dark, #1a1a2e);
-}
 
-.filter-btn:focus-visible {
-  outline: 2px solid var(--clr-accent, #e8c97a);
-  outline-offset: 2px;
+  border-color: #1a1a2e;
+  border-color: var(--clr-dark);
 }
 
 .filter-btn.active {
-  background-color: var(--clr-dark, #1a1a2e);
-  color: var(--clr-accent, #e8c97a);
+  background-color: #1a1a2e;
+  background-color: var(--clr-dark);
 
-  border-color: var(--clr-dark, #1a1a2e);
+  color: #e8c97a;
+  color: var(--clr-accent);
 }
 
-/* ---------- Course List ---------- */
+/* ---------- COURSE LIST ---------- */
+
 #course-list {
   padding: 0.5rem 1rem;
 
@@ -369,16 +419,14 @@ h1::after {
   padding: 0.55rem 0.9rem;
 
   text-align: center;
-  font-size: 0.9rem;
-  font-weight: 500;
 
   background: #f0ede5;
-  color: var(--clr-text, #2c2c3a);
 
   border-left: 4px solid transparent;
-  border-radius: var(--radius, 8px);
+  border-radius: 8px;
+  border-radius: var(--radius);
 
-  transition: transform var(--transition, 200ms ease);
+  transition: transform 0.2s ease;
 }
 
 .course-card:hover {
@@ -386,19 +434,16 @@ h1::after {
 }
 
 .course-card.completed {
-  background-color: var(--clr-complete-bg, #d4edda);
-  color: var(--clr-complete, #2e7d5a);
+  background-color: #d4edda;
+  background-color: var(--clr-complete-bg);
 
-  border-left-color: var(--clr-complete, #2e7d5a);
+  color: #2e7d5a;
+  color: var(--clr-complete);
+
+  border-left-color: #2e7d5a;
+  border-left-color: var(--clr-complete);
 
   font-weight: 600;
-}
-
-.course-card.completed::after {
-  content: " ✓";
-
-  font-size: 0.8rem;
-  opacity: 0.8;
 }
 
 .credit-total {
@@ -408,10 +453,12 @@ h1::after {
   font-size: 0.88rem;
   font-style: italic;
 
-  color: var(--clr-muted, #6b6b7d);
+  color: #6b6b7d;
+  color: var(--clr-muted);
 }
 
-/* ---------- Footer ---------- */
+/* ---------- FOOTER ---------- */
+
 footer {
   padding: 2rem 1.25rem 1.5rem;
 
@@ -422,7 +469,9 @@ footer {
 
   text-align: center;
 
-  background-color: var(--clr-dark, #1a1a2e);
+  background-color: #1a1a2e;
+  background-color: var(--clr-dark);
+
   color: #bbbbbb;
 
   font-size: 0.85rem;
@@ -431,34 +480,27 @@ footer {
 .footer-social {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 1.25rem;
 }
 
 .footer-social a {
-  display: inline-flex;
-
   color: #bbbbbb;
 
   transition:
-    color var(--transition, 200ms ease),
-    transform var(--transition, 200ms ease);
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footer-social a:hover {
-  color: var(--clr-accent, #e8c97a);
-  transform: translateY(-2px);
-}
+  color: #e8c97a;
+  color: var(--clr-accent);
 
-.footer-social a:focus-visible {
-  outline: 2px solid var(--clr-accent, #e8c97a);
-  outline-offset: 2px;
+  transform: translateY(-2px);
 }
 
 .footer-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.25rem;
 }
 
