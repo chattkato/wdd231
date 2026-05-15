@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Abuja Chamber of Commerce – Member Directory. Discover businesses and organizations shaping Nigeria's Federal Capital Territory." />
+  <meta name="author" content="Chatt" />
+  <title>Member Directory | Abuja Chamber of Commerce</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Member Directory | Abuja Chamber of Commerce" />
+  <meta property="og:description" content="Discover businesses and organizations shaping Nigeria's Federal Capital Territory. Browse gold, silver, and member-level companies." />
+  <meta property="og:image" content="images/og-image.png" />
+  <meta property="og:url" content="https://yourdomain.github.io/wdd231/chamber/directory.html" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/small.css" />
+  <link rel="stylesheet" href="css/larger.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-block">
+        <img src="images/favicon.svg" alt="Abuja Chamber of Commerce logo" class="site-logo" />
+        <div class="logo-text">
+          <span class="logo-title">Abuja</span>
+          <span class="logo-sub">Chamber of Commerce</span>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="directory.html" class="active" aria-current="page">Directory</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="discover.html">Discover</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="directory-hero">
+      <div class="hero-content">
+        <h1>Member Directory</h1>
+        <p>Connecting businesses that build the Federal Capital Territory</p>
+      </div>
+    </section>
+
+    <section class="directory-section">
+      <div class="controls-bar">
+        <div class="results-info">
+          <span id="memberCount">Loading members…</span>
+        </div>
+        <div class="view-toggle" role="group" aria-label="View toggle">
+          <button id="gridBtn" class="view-btn active" aria-pressed="true" title="Grid view">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+            </svg>
+            Grid
+          </button>
+          <button id="listBtn" class="view-btn" aria-pressed="false" title="List view">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+            List
+          </button>
+        </div>
+      </div>
+
+      <div id="memberDisplay" class="member-grid" aria-live="polite" aria-label="Chamber members">
+        <!-- Populated by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/favicon.svg" alt="" class="footer-logo" />
+        <span>Abuja Chamber of Commerce</span>
+      </div>
+      <div class="footer-contact">
+        <p>Plot 256, Herbert Macaulay Way</p>
+        <p>Central Business District, Abuja, FCT</p>
+        <p><a href="tel:+2349012345678">+234 901 234 5678</a></p>
+        <p><a href="mailto:info@abujachamber.org.ng">info@abujachamber.org.ng</a></p>
+      </div>
+      <div class="footer-dev">
+        <p>Chatt &nbsp;|&nbsp; WDD 231</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+        <p>&copy; <span id="copyrightYear"></span> Abuja Chamber of Commerce</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/directory.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+/* ===================================================
+   ABUJA CHAMBER OF COMMERCE — larger.css
+   Breakpoints applied on top of small.css
+   =================================================== */
+
+/* ---- Tablet: 640px+ ---- */
+@media (min-width: 640px) {
+  .directory-hero h1 { font-size: 2.5rem; }
+  .directory-hero p  { font-size: 1.1rem; }
+
+  .member-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* ---- Desktop nav: 768px+ ---- */
+@media (min-width: 768px) {
+
+  .nav-toggle { display: none; }
+
+  nav#mainNav {
+    display: flex !important;
+    position: static;
+    border-top: none;
+    padding: 0;
+    background: transparent;
+  }
+
+  nav#mainNav ul { display: flex; gap: 0.25rem; }
+
+  nav#mainNav ul li a {
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    border-bottom: none;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+  }
+
+  nav#mainNav ul li a:hover,
+  nav#mainNav ul li a:focus {
+    background-color: rgba(255,255,255,0.12);
+    color: var(--gold-lt);
+  }
+
+  nav#mainNav ul li a.active {
+    color: var(--gold-lt);
+    background-color: rgba(200, 150, 12, 0.15);
+  }
+
+  .directory-hero { padding: 3.5rem 2rem 3rem; }
+  .directory-section { padding: 2rem 2rem 4rem; }
+}
+
+/* ---- Wide Desktop: 1024px+ ---- */
+@media (min-width: 1024px) {
+  .member-grid { grid-template-columns: repeat(3, 1fr); }
+  .directory-hero h1 { font-size: 3rem; }
+
+  .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
+  .footer-brand { grid-column: auto; align-self: start; }
+
+  .member-list-item { padding: 1rem 1.4rem; }
+}
+
+/* ---- XL: 1200px+ ---- */
+@media (min-width: 1200px) {
+  .member-grid { grid-template-columns: repeat(4, 1fr); }
+}
