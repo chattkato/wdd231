@@ -18,12 +18,12 @@
   <meta property="og:image" content="https://chattkato.github.io/wdd231/chamber/images/og-image.png">
   <meta property="og:url" content="https://chattkato.github.io/wdd231/chamber/directory.html">
 
-  <!-- Google Fonts — preconnect first, then stylesheet link (no @import) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- CSS: normalize → small → larger -->
+  <!-- CSS -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/small.css">
   <link rel="stylesheet" href="css/larger.css">
@@ -56,46 +56,39 @@
   </header>
 
   <main>
-    <section class="directory-hero">
-      <div class="hero-content">
-        <h1>Member Directory</h1>
-        <p>Connecting businesses that build the Federal Capital Territory</p>
-      </div>
-    </section>
+    <div class="page-title-bar">
+      <h1>Business Directory</h1>
+    </div>
 
-    <section class="directory-section" aria-labelledby="directory-heading">
-      <h2 id="directory-heading" class="sr-only">Business Members</h2>
+    <section class="directory-section" aria-labelledby="dir-heading">
+      <h2 id="dir-heading" class="sr-only">Member Listings</h2>
 
-      <div class="controls-bar">
-        <div class="results-info">
-          <span id="memberCount">Loading members…</span>
-        </div>
-        <div class="view-toggle" role="group" aria-label="View toggle">
+      <!-- Toggle buttons — icon only, centered -->
+      <div class="view-toggle-wrap">
+        <div class="view-toggle" role="group" aria-label="Display view">
           <button id="gridBtn" class="view-btn active" aria-pressed="true" title="Grid view">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- Grid icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="3" width="7" height="7"></rect>
               <rect x="14" y="3" width="7" height="7"></rect>
               <rect x="3" y="14" width="7" height="7"></rect>
               <rect x="14" y="14" width="7" height="7"></rect>
             </svg>
-            Grid
           </button>
           <button id="listBtn" class="view-btn" aria-pressed="false" title="List view">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="8" y1="6" x2="21" y2="6"></line>
-              <line x1="8" y1="12" x2="21" y2="12"></line>
-              <line x1="8" y1="18" x2="21" y2="18"></line>
-              <line x1="3" y1="6" x2="3.01" y2="6"></line>
-              <line x1="3" y1="12" x2="3.01" y2="12"></line>
-              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            <!-- List icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <line x1="3" y1="14" x2="21" y2="14"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
-            List
           </button>
         </div>
       </div>
 
+      <!-- Member output: JS switches between grid cards and table rows -->
       <div id="memberDisplay" class="member-grid" role="region" aria-live="polite" aria-label="Chamber members">
-        <!-- Populated by JavaScript -->
       </div>
     </section>
   </main>
@@ -120,7 +113,6 @@
     </div>
   </footer>
 
-  <!-- defer keeps script out of render path; no async needed -->
   <script src="scripts/directory.js" defer></script>
 </body>
 </html>

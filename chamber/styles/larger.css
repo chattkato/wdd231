@@ -1,18 +1,9 @@
-/* ===================================================
+/* =====================================================
    ABUJA CHAMBER OF COMMERCE — larger.css
-   Breakpoints layered on top of small.css
-   =================================================== */
+   ===================================================== */
 
-/* ---- Tablet: 640px+ ---- */
+/* ---- Tablet 640px+: grid goes 2-col ---- */
 @media (min-width: 640px) {
-  .directory-hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .directory-hero p {
-    font-size: 1.1rem;
-  }
-
   .member-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -28,9 +19,8 @@
   }
 }
 
-/* ---- Desktop nav appears: 768px+ ---- */
+/* ---- Desktop nav: 768px+ ---- */
 @media (min-width: 768px) {
-
   .nav-toggle {
     display: none;
   }
@@ -46,56 +36,117 @@
 
   nav#mainNav ul {
     display: flex;
-    gap: 0.2rem;
+    gap: 0.15rem;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   nav#mainNav ul li a {
-    padding: 0.4rem 0.85rem;
+    padding: 0.4rem 0.9rem;
     border-radius: var(--radius);
     border-bottom: none;
     border-left: none;
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.88);
-    transition: background-color 0.2s, color 0.2s;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: background-color 0.2s;
   }
 
   nav#mainNav ul li a:hover,
   nav#mainNav ul li a:focus {
-    background-color: rgba(255, 255, 255, 0.12);
-    color: var(--gold-lt);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
   }
 
   nav#mainNav ul li a.active {
-    color: var(--gold-lt);
-    background-color: rgba(200, 150, 12, 0.18);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
     border-left: none;
-    padding-left: 0.85rem;
+    padding-left: 0.9rem;
+    font-weight: 700;
   }
 
-  .directory-hero {
-    padding: 3.5rem 2rem 3rem;
-  }
-
-  .directory-section {
-    padding: 2rem 2rem 4rem;
+  /* LIST VIEW on desktop: becomes a table layout (Image 3) */
+  .member-list {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
   }
 
   .member-list-item {
-    padding: 1rem 1.4rem;
+    display: table-row;
+    flex-direction: unset;
+    align-items: unset;
+    text-align: left;
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .member-list-item:first-child {
+    border-top: none;
+  }
+
+  .member-list-item:nth-child(odd) {
+    background-color: var(--row-alt);
+  }
+
+  .member-list-item:nth-child(even) {
+    background-color: var(--white);
+  }
+
+  /* Each list cell becomes a table-cell */
+  .list-logo-wrap {
+    display: none;
+  }
+
+  .list-name-text,
+  .list-address-text,
+  .list-phone-text,
+  .list-website-link {
+    display: table-cell;
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #D8EEF4;
+  }
+
+  .list-name-text {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    white-space: nowrap;
+  }
+
+  .list-address-text {
+    color: var(--text-mid);
+    min-width: 180px;
+  }
+
+  .list-phone-text {
+    color: var(--text-mid);
+    white-space: nowrap;
+  }
+
+  .list-website-link {
+    color: var(--link);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .page-title-bar {
+    padding: 2rem 1.2rem 0.5rem;
+  }
+
+  .page-title-bar h1 {
+    font-size: 2.2rem;
   }
 }
 
-/* ---- Wide Desktop: 1024px+ ---- */
-@media (min-width: 1024px) {
+/* ---- Desktop 3-col grid: 900px+ ---- */
+@media (min-width: 900px) {
   .member-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .directory-hero h1 {
-    font-size: 3rem;
   }
 
   .footer-inner {
@@ -108,7 +159,7 @@
   }
 }
 
-/* ---- XL: 1200px+ ---- */
+/* ---- XL 1200px+: 4-col grid ---- */
 @media (min-width: 1200px) {
   .member-grid {
     grid-template-columns: repeat(4, 1fr);

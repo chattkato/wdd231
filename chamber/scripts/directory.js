@@ -1,48 +1,22 @@
 // ============================================================
-//  Abuja Chamber of Commerce — Directory Page Script
-//
-//  Fixes applied:
-//  - No inline style attributes in generated HTML (rubric + audit)
-//  - List view renders text only, no images (rubric criterion 10)
-//  - Copyright year and last modified generated via JS
+//  Abuja Chamber of Commerce — Directory Script
+//  Grid view:  white cards with logo + info (Images 1 & 2)
+//  List view:  mobile = centered logo + stacked info + dividers
+//              desktop = table layout, 4 columns, no images
 // ============================================================
 
-const memberDisplay = document.getElementById('memberDisplay');
-const gridBtn       = document.getElementById('gridBtn');
-const listBtn       = document.getElementById('listBtn');
-const memberCount   = document.getElementById('memberCount');
+var memberDisplay = document.getElementById('memberDisplay');
+var gridBtn       = document.getElementById('gridBtn');
+var listBtn       = document.getElementById('listBtn');
 
-let allMembers = [];
-let currentView = 'grid';
+var allMembers  = [];
+var currentView = 'grid';
 
-// ---- Footer: copyright year and last modified ----
+// ---- Footer dates ----
 document.getElementById('copyrightYear').textContent = new Date().getFullYear();
 document.getElementById('lastModified').textContent  = document.lastModified;
 
-// ---- Helper: membership badge label ----
-function badgeLabel(level) {
-  if (level === 3) return 'Gold Member';
-  if (level === 2) return 'Silver Member';
-  return 'Member';
-}
-
-// ---- Helper: membership badge CSS class ----
-function badgeClass(level) {
-  if (level === 3) return 'badge-gold';
-  if (level === 2) return 'badge-silver';
-  return 'badge-member';
-}
-
-// ---- Helper: initials from company name ----
-function initials(name) {
-  return name
-    .split(' ')
-    .slice(0, 2)
-    .map(function(word) { return word[0].toUpperCase(); })
-    .join('');
-}
-
-// ---- Helper: strip www. from URL for display ----
+// ---- Helper: strip www. for display ----
 function cleanDomain(url) {
   try {
     return new URL(url).hostname.replace('www.', '');
@@ -51,128 +25,123 @@ function cleanDomain(url) {
   }
 }
 
-// ---- Build a grid card for one member ----
+// ---- Helper: initials from name ----
+function getInitials(name) {
+  return name.split(' ').slice(0, 2).map(function(w) {
+    return w[0].toUpperCase();
+  }).join('');
+}
+
+// ====================
+// BUILD: Grid card
+// ====================
 function buildCard(member) {
-  const article = document.createElement('article');
+  var article = document.createElement('article');
   article.className = 'member-card';
 
-  // Placeholder shown until/unless real image loads
-  const placeholder = document.createElement('div');
-  placeholder.className = 'card-img-placeholder';
-  placeholder.textContent = initials(member.name);
+  // Logo wrap
+  var logoWrap = document.createElement('div');
+  logoWrap.className = 'card-logo-wrap';
 
-  const imgWrap = document.createElement('div');
-  imgWrap.className = 'card-img-wrap';
-  imgWrap.appendChild(placeholder);
-
-  // Try loading real image; swap out placeholder on success
-  const img = new Image();
+  var img = new Image();
   img.alt = member.name + ' logo';
   img.src = 'images/' + member.image;
+
+  var placeholder = document.createElement('div');
+  placeholder.className = 'card-logo-placeholder';
+  placeholder.textContent = getInitials(member.name);
+  logoWrap.appendChild(placeholder);
+
   img.onload = function() {
-    imgWrap.innerHTML = '';
-    imgWrap.appendChild(img);
+    logoWrap.innerHTML = '';
+    logoWrap.appendChild(img);
   };
 
-  // Card body built safely with DOM (no innerHTML with user data)
-  const badge = document.createElement('span');
-  badge.className = 'card-badge ' + badgeClass(member.membershipLevel);
-  badge.textContent = badgeLabel(member.membershipLevel);
+  // Name
+  var nameEl = document.createElement('p');
+  nameEl.className = 'card-name';
+  nameEl.textContent = member.name;
 
-  const name = document.createElement('h2');
-  name.className = 'card-name';
-  name.textContent = member.name;
+  // Address
+  var addrEl = document.createElement('p');
+  addrEl.className = 'card-address';
+  addrEl.textContent = member.address;
 
-  const desc = document.createElement('p');
-  desc.className = 'card-description';
-  desc.textContent = member.description;
+  // Phone
+  var phoneEl = document.createElement('p');
+  phoneEl.className = 'card-phone';
+  phoneEl.textContent = member.phone;
 
-  const addrP = document.createElement('p');
-  addrP.textContent = '\uD83D\uDCCD ' + member.address;
+  // Website
+  var siteEl = document.createElement('a');
+  siteEl.className = 'card-website';
+  siteEl.href = member.website;
+  siteEl.target = '_blank';
+  siteEl.rel = 'noopener noreferrer';
+  siteEl.textContent = member.website;
 
-  const phoneLink = document.createElement('a');
-  phoneLink.href = 'tel:' + member.phone.replace(/\s+/g, '');
-  phoneLink.textContent = member.phone;
-  const phoneP = document.createElement('p');
-  phoneP.textContent = '\uD83D\uDCDE ';
-  phoneP.appendChild(phoneLink);
-
-  const siteLink = document.createElement('a');
-  siteLink.href = member.website;
-  siteLink.target = '_blank';
-  siteLink.rel = 'noopener noreferrer';
-  siteLink.textContent = cleanDomain(member.website);
-  const siteP = document.createElement('p');
-  siteP.textContent = '\uD83C\uDF10 ';
-  siteP.appendChild(siteLink);
-
-  const info = document.createElement('div');
-  info.className = 'card-info';
-  info.appendChild(addrP);
-  info.appendChild(phoneP);
-  info.appendChild(siteP);
-
-  const body = document.createElement('div');
-  body.className = 'card-body';
-  body.appendChild(badge);
-  body.appendChild(name);
-  body.appendChild(desc);
-  body.appendChild(info);
-
-  article.appendChild(imgWrap);
-  article.appendChild(body);
+  article.appendChild(logoWrap);
+  article.appendChild(nameEl);
+  article.appendChild(addrEl);
+  article.appendChild(phoneEl);
+  article.appendChild(siteEl);
 
   return article;
 }
 
-// ---- Build a list row for one member (no images — rubric criterion 10) ----
+// =============================================
+// BUILD: List item
+// Mobile  → centered logo + stacked text
+// Desktop → becomes table row via CSS display:table-row
+// =============================================
 function buildListItem(member) {
-  const row = document.createElement('div');
+  var row = document.createElement('div');
   row.className = 'member-list-item';
 
-  const info = document.createElement('div');
-  info.className = 'list-info';
+  // Logo (hidden on desktop via CSS, visible mobile)
+  var logoWrap = document.createElement('div');
+  logoWrap.className = 'list-logo-wrap';
 
-  const nameEl = document.createElement('div');
-  nameEl.className = 'list-name';
+  var img = new Image();
+  img.alt = member.name + ' logo';
+  img.src = 'images/' + member.image;
+  img.onload = function() {
+    logoWrap.appendChild(img);
+  };
+
+  // Name — becomes first table cell on desktop
+  var nameEl = document.createElement('div');
+  nameEl.className = 'list-name-text';
   nameEl.textContent = member.name;
 
-  const addrEl = document.createElement('div');
-  addrEl.className = 'list-address';
+  // Address — second cell
+  var addrEl = document.createElement('div');
+  addrEl.className = 'list-address-text';
   addrEl.textContent = member.address;
 
-  info.appendChild(nameEl);
-  info.appendChild(addrEl);
+  // Phone — third cell
+  var phoneEl = document.createElement('div');
+  phoneEl.className = 'list-phone-text';
+  phoneEl.textContent = member.phone;
 
-  const right = document.createElement('div');
-  right.className = 'list-right';
+  // Website — fourth cell
+  var siteEl = document.createElement('a');
+  siteEl.className = 'list-website-link';
+  siteEl.href = member.website;
+  siteEl.target = '_blank';
+  siteEl.rel = 'noopener noreferrer';
+  siteEl.textContent = member.website;
 
-  const badge = document.createElement('span');
-  badge.className = 'card-badge ' + badgeClass(member.membershipLevel);
-  badge.textContent = badgeLabel(member.membershipLevel);
-
-  const phone = document.createElement('span');
-  phone.className = 'list-phone';
-  phone.textContent = member.phone;
-
-  const siteLink = document.createElement('a');
-  siteLink.className = 'list-website';
-  siteLink.href = member.website;
-  siteLink.target = '_blank';
-  siteLink.rel = 'noopener noreferrer';
-  siteLink.textContent = cleanDomain(member.website);
-
-  right.appendChild(badge);
-  right.appendChild(phone);
-  right.appendChild(siteLink);
-
-  row.appendChild(info);
-  row.appendChild(right);
+  row.appendChild(logoWrap);
+  row.appendChild(nameEl);
+  row.appendChild(addrEl);
+  row.appendChild(phoneEl);
+  row.appendChild(siteEl);
 
   return row;
 }
 
-// ---- Render all members in the chosen view ----
+// ---- Render ----
 function renderMembers(members, view) {
   memberDisplay.innerHTML = '';
 
@@ -187,12 +156,9 @@ function renderMembers(members, view) {
       memberDisplay.appendChild(buildListItem(m));
     });
   }
-
-  var label = members.length === 1 ? 'member' : 'members';
-  memberCount.textContent = 'Showing ' + members.length + ' ' + label;
 }
 
-// ---- View toggle: Grid ----
+// ---- Toggle: Grid ----
 gridBtn.addEventListener('click', function() {
   currentView = 'grid';
   gridBtn.classList.add('active');
@@ -202,7 +168,7 @@ gridBtn.addEventListener('click', function() {
   renderMembers(allMembers, 'grid');
 });
 
-// ---- View toggle: List ----
+// ---- Toggle: List ----
 listBtn.addEventListener('click', function() {
   currentView = 'list';
   listBtn.classList.add('active');
@@ -212,7 +178,7 @@ listBtn.addEventListener('click', function() {
   renderMembers(allMembers, 'list');
 });
 
-// ---- Mobile nav toggle ----
+// ---- Mobile nav ----
 var navToggle = document.getElementById('navToggle');
 var mainNav   = document.getElementById('mainNav');
 
@@ -221,21 +187,18 @@ navToggle.addEventListener('click', function() {
   navToggle.setAttribute('aria-expanded', isOpen.toString());
 });
 
-// ---- Fetch members from JSON ----
+// ---- Fetch ----
 async function loadMembers() {
   try {
     var response = await fetch('data/members.json');
-    if (!response.ok) {
-      throw new Error('HTTP error: ' + response.status);
-    }
+    if (!response.ok) throw new Error('HTTP ' + response.status);
     allMembers = await response.json();
     renderMembers(allMembers, currentView);
-  } catch (error) {
-    var errP = document.createElement('p');
-    errP.textContent = 'Unable to load member data. Please try again later.';
-    memberDisplay.appendChild(errP);
-    memberCount.textContent = 'No members loaded';
-    console.error('Failed to load members:', error);
+  } catch (err) {
+    var msg = document.createElement('p');
+    msg.textContent = 'Could not load members. Please try again later.';
+    memberDisplay.appendChild(msg);
+    console.error('loadMembers error:', err);
   }
 }
 
