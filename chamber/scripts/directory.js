@@ -1,7 +1,10 @@
 // ============================================================
 //  Abuja Chamber of Commerce — Directory Page Script
-//  Handles: fetch members.json, grid/list rendering,
-//           view toggle, copyright year, last modified date
+//
+//  Fixes applied:
+//  - No inline style attributes in generated HTML (rubric + audit)
+//  - List view renders text only, no images (rubric criterion 10)
+//  - Copyright year and last modified generated via JS
 // ============================================================
 
 const memberDisplay = document.getElementById('memberDisplay');
@@ -12,115 +15,185 @@ const memberCount   = document.getElementById('memberCount');
 let allMembers = [];
 let currentView = 'grid';
 
-// ---- Footer dates ----
+// ---- Footer: copyright year and last modified ----
 document.getElementById('copyrightYear').textContent = new Date().getFullYear();
 document.getElementById('lastModified').textContent  = document.lastModified;
 
-// ---- Helpers ----
+// ---- Helper: membership badge label ----
 function badgeLabel(level) {
   if (level === 3) return 'Gold Member';
   if (level === 2) return 'Silver Member';
   return 'Member';
 }
 
+// ---- Helper: membership badge CSS class ----
 function badgeClass(level) {
   if (level === 3) return 'badge-gold';
   if (level === 2) return 'badge-silver';
   return 'badge-member';
 }
 
+// ---- Helper: initials from company name ----
 function initials(name) {
-  return name.split(' ').slice(0, 2).map(w => w[0].toUpperCase()).join('');
+  return name
+    .split(' ')
+    .slice(0, 2)
+    .map(function(word) { return word[0].toUpperCase(); })
+    .join('');
 }
 
+// ---- Helper: strip www. from URL for display ----
 function cleanDomain(url) {
   try {
     return new URL(url).hostname.replace('www.', '');
-  } catch {
+  } catch (e) {
     return url;
   }
 }
 
-// ---- Build grid card ----
+// ---- Build a grid card for one member ----
 function buildCard(member) {
   const article = document.createElement('article');
   article.className = 'member-card';
-  article.innerHTML = `
-    <div class="card-img-wrap">
-      <div class="card-img-placeholder">${initials(member.name)}</div>
-    </div>
-    <div class="card-body">
-      <span class="card-badge ${badgeClass(member.membershipLevel)}">${badgeLabel(member.membershipLevel)}</span>
-      <h2 class="card-name">${member.name}</h2>
-      <p class="card-description">${member.description}</p>
-      <div class="card-info">
-        <p>📍 ${member.address}</p>
-        <p>📞 <a href="tel:${member.phone.replace(/\s+/g, '')}">${member.phone}</a></p>
-        <p>🌐 <a href="${member.website}" target="_blank" rel="noopener noreferrer">${cleanDomain(member.website)}</a></p>
-      </div>
-    </div>
-  `;
 
+  // Placeholder shown until/unless real image loads
+  const placeholder = document.createElement('div');
+  placeholder.className = 'card-img-placeholder';
+  placeholder.textContent = initials(member.name);
+
+  const imgWrap = document.createElement('div');
+  imgWrap.className = 'card-img-wrap';
+  imgWrap.appendChild(placeholder);
+
+  // Try loading real image; swap out placeholder on success
   const img = new Image();
-  img.alt = `${member.name} logo`;
-  img.src = `images/${member.image}`;
-  img.onload = () => {
-    const wrap = article.querySelector('.card-img-wrap');
-    wrap.innerHTML = '';
-    wrap.appendChild(img);
+  img.alt = member.name + ' logo';
+  img.src = 'images/' + member.image;
+  img.onload = function() {
+    imgWrap.innerHTML = '';
+    imgWrap.appendChild(img);
   };
+
+  // Card body built safely with DOM (no innerHTML with user data)
+  const badge = document.createElement('span');
+  badge.className = 'card-badge ' + badgeClass(member.membershipLevel);
+  badge.textContent = badgeLabel(member.membershipLevel);
+
+  const name = document.createElement('h2');
+  name.className = 'card-name';
+  name.textContent = member.name;
+
+  const desc = document.createElement('p');
+  desc.className = 'card-description';
+  desc.textContent = member.description;
+
+  const addrP = document.createElement('p');
+  addrP.textContent = '\uD83D\uDCCD ' + member.address;
+
+  const phoneLink = document.createElement('a');
+  phoneLink.href = 'tel:' + member.phone.replace(/\s+/g, '');
+  phoneLink.textContent = member.phone;
+  const phoneP = document.createElement('p');
+  phoneP.textContent = '\uD83D\uDCDE ';
+  phoneP.appendChild(phoneLink);
+
+  const siteLink = document.createElement('a');
+  siteLink.href = member.website;
+  siteLink.target = '_blank';
+  siteLink.rel = 'noopener noreferrer';
+  siteLink.textContent = cleanDomain(member.website);
+  const siteP = document.createElement('p');
+  siteP.textContent = '\uD83C\uDF10 ';
+  siteP.appendChild(siteLink);
+
+  const info = document.createElement('div');
+  info.className = 'card-info';
+  info.appendChild(addrP);
+  info.appendChild(phoneP);
+  info.appendChild(siteP);
+
+  const body = document.createElement('div');
+  body.className = 'card-body';
+  body.appendChild(badge);
+  body.appendChild(name);
+  body.appendChild(desc);
+  body.appendChild(info);
+
+  article.appendChild(imgWrap);
+  article.appendChild(body);
 
   return article;
 }
 
-// ---- Build list item ----
+// ---- Build a list row for one member (no images — rubric criterion 10) ----
 function buildListItem(member) {
-  const li = document.createElement('div');
-  li.className = 'member-list-item';
-  li.innerHTML = `
-    <div class="list-avatar">
-      <span class="list-avatar-placeholder">${initials(member.name)}</span>
-    </div>
-    <div class="list-info">
-      <div class="list-name">${member.name}</div>
-      <div class="list-address">${member.address}</div>
-    </div>
-    <div class="list-right">
-      <span class="card-badge ${badgeClass(member.membershipLevel)}">${badgeLabel(member.membershipLevel)}</span>
-      <span class="list-phone">${member.phone}</span>
-      <a href="${member.website}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem;">${cleanDomain(member.website)}</a>
-    </div>
-  `;
+  const row = document.createElement('div');
+  row.className = 'member-list-item';
 
-  const img = new Image();
-  img.alt = '';
-  img.src = `images/${member.image}`;
-  img.onload = () => {
-    const wrap = li.querySelector('.list-avatar');
-    wrap.innerHTML = '';
-    wrap.appendChild(img);
-  };
+  const info = document.createElement('div');
+  info.className = 'list-info';
 
-  return li;
+  const nameEl = document.createElement('div');
+  nameEl.className = 'list-name';
+  nameEl.textContent = member.name;
+
+  const addrEl = document.createElement('div');
+  addrEl.className = 'list-address';
+  addrEl.textContent = member.address;
+
+  info.appendChild(nameEl);
+  info.appendChild(addrEl);
+
+  const right = document.createElement('div');
+  right.className = 'list-right';
+
+  const badge = document.createElement('span');
+  badge.className = 'card-badge ' + badgeClass(member.membershipLevel);
+  badge.textContent = badgeLabel(member.membershipLevel);
+
+  const phone = document.createElement('span');
+  phone.className = 'list-phone';
+  phone.textContent = member.phone;
+
+  const siteLink = document.createElement('a');
+  siteLink.className = 'list-website';
+  siteLink.href = member.website;
+  siteLink.target = '_blank';
+  siteLink.rel = 'noopener noreferrer';
+  siteLink.textContent = cleanDomain(member.website);
+
+  right.appendChild(badge);
+  right.appendChild(phone);
+  right.appendChild(siteLink);
+
+  row.appendChild(info);
+  row.appendChild(right);
+
+  return row;
 }
 
-// ---- Render members ----
+// ---- Render all members in the chosen view ----
 function renderMembers(members, view) {
   memberDisplay.innerHTML = '';
 
   if (view === 'grid') {
     memberDisplay.className = 'member-grid';
-    members.forEach(m => memberDisplay.appendChild(buildCard(m)));
+    members.forEach(function(m) {
+      memberDisplay.appendChild(buildCard(m));
+    });
   } else {
     memberDisplay.className = 'member-list';
-    members.forEach(m => memberDisplay.appendChild(buildListItem(m)));
+    members.forEach(function(m) {
+      memberDisplay.appendChild(buildListItem(m));
+    });
   }
 
-  memberCount.textContent = `Showing ${members.length} member${members.length !== 1 ? 's' : ''}`;
+  var label = members.length === 1 ? 'member' : 'members';
+  memberCount.textContent = 'Showing ' + members.length + ' ' + label;
 }
 
-// ---- View toggle ----
-gridBtn.addEventListener('click', () => {
+// ---- View toggle: Grid ----
+gridBtn.addEventListener('click', function() {
   currentView = 'grid';
   gridBtn.classList.add('active');
   gridBtn.setAttribute('aria-pressed', 'true');
@@ -129,7 +202,8 @@ gridBtn.addEventListener('click', () => {
   renderMembers(allMembers, 'grid');
 });
 
-listBtn.addEventListener('click', () => {
+// ---- View toggle: List ----
+listBtn.addEventListener('click', function() {
   currentView = 'list';
   listBtn.classList.add('active');
   listBtn.setAttribute('aria-pressed', 'true');
@@ -139,27 +213,27 @@ listBtn.addEventListener('click', () => {
 });
 
 // ---- Mobile nav toggle ----
-const navToggle = document.getElementById('navToggle');
-const mainNav   = document.getElementById('mainNav');
+var navToggle = document.getElementById('navToggle');
+var mainNav   = document.getElementById('mainNav');
 
-navToggle.addEventListener('click', () => {
-  const isOpen = mainNav.classList.toggle('open');
+navToggle.addEventListener('click', function() {
+  var isOpen = mainNav.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', isOpen.toString());
 });
 
-// ---- Fetch members ----
+// ---- Fetch members from JSON ----
 async function loadMembers() {
   try {
-    const response = await fetch('data/members.json');
-    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    var response = await fetch('data/members.json');
+    if (!response.ok) {
+      throw new Error('HTTP error: ' + response.status);
+    }
     allMembers = await response.json();
     renderMembers(allMembers, currentView);
   } catch (error) {
-    memberDisplay.innerHTML = `
-      <p style="grid-column:1/-1; text-align:center; color:#c0392b; padding:2rem;">
-        Unable to load member data. Please try again later.<br>
-        <small>${error.message}</small>
-      </p>`;
+    var errP = document.createElement('p');
+    errP.textContent = 'Unable to load member data. Please try again later.';
+    memberDisplay.appendChild(errP);
     memberCount.textContent = 'No members loaded';
     console.error('Failed to load members:', error);
   }

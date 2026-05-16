@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Abuja Chamber of Commerce – Member Directory. Discover businesses and organizations shaping Nigeria's Federal Capital Territory." />
-  <meta name="author" content="Chatt" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abuja Chamber of Commerce Member Directory. Discover businesses and organizations shaping Nigeria's Federal Capital Territory.">
+  <meta name="author" content="Chatt Kato">
+
   <title>Member Directory | Abuja Chamber of Commerce</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Member Directory | Abuja Chamber of Commerce" />
-  <meta property="og:description" content="Discover businesses and organizations shaping Nigeria's Federal Capital Territory. Browse gold, silver, and member-level companies." />
-  <meta property="og:image" content="images/og-image.png" />
-  <meta property="og:url" content="https://yourdomain.github.io/wdd231/chamber/directory.html" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Member Directory | Abuja Chamber of Commerce">
+  <meta property="og:description" content="Discover businesses shaping Nigeria's Federal Capital Territory. Browse gold, silver, and member-level companies in Abuja.">
+  <meta property="og:image" content="https://chattkato.github.io/wdd231/chamber/images/og-image.png">
+  <meta property="og:url" content="https://chattkato.github.io/wdd231/chamber/directory.html">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/normalize.css" />
-  <link rel="stylesheet" href="css/small.css" />
-  <link rel="stylesheet" href="css/larger.css" />
+  <!-- Google Fonts — preconnect first, then stylesheet link (no @import) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS: normalize → small → larger -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/small.css">
+  <link rel="stylesheet" href="css/larger.css">
 </head>
 <body>
 
   <header>
     <div class="header-inner">
       <div class="logo-block">
-        <img src="images/favicon.svg" alt="Abuja Chamber of Commerce logo" class="site-logo" />
+        <img src="images/favicon.svg" alt="Abuja Chamber of Commerce logo" class="site-logo">
         <div class="logo-text">
           <span class="logo-title">Abuja</span>
           <span class="logo-sub">Chamber of Commerce</span>
@@ -57,7 +63,9 @@
       </div>
     </section>
 
-    <section class="directory-section">
+    <section class="directory-section" aria-labelledby="directory-heading">
+      <h2 id="directory-heading" class="sr-only">Business Members</h2>
+
       <div class="controls-bar">
         <div class="results-info">
           <span id="memberCount">Loading members…</span>
@@ -65,23 +73,28 @@
         <div class="view-toggle" role="group" aria-label="View toggle">
           <button id="gridBtn" class="view-btn active" aria-pressed="true" title="Grid view">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-              <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
             </svg>
             Grid
           </button>
           <button id="listBtn" class="view-btn" aria-pressed="false" title="List view">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
-              <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
-              <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
             </svg>
             List
           </button>
         </div>
       </div>
 
-      <div id="memberDisplay" class="member-grid" aria-live="polite" aria-label="Chamber members">
+      <div id="memberDisplay" class="member-grid" role="region" aria-live="polite" aria-label="Chamber members">
         <!-- Populated by JavaScript -->
       </div>
     </section>
@@ -90,7 +103,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="images/favicon.svg" alt="" class="footer-logo" />
+        <img src="images/favicon.svg" alt="Abuja Chamber of Commerce" class="footer-logo">
         <span>Abuja Chamber of Commerce</span>
       </div>
       <div class="footer-contact">
@@ -100,13 +113,14 @@
         <p><a href="mailto:info@abujachamber.org.ng">info@abujachamber.org.ng</a></p>
       </div>
       <div class="footer-dev">
-        <p>Chatt &nbsp;|&nbsp; WDD 231</p>
+        <p>Chatt Kato &nbsp;|&nbsp; WDD 231</p>
         <p>Last Modified: <span id="lastModified"></span></p>
         <p>&copy; <span id="copyrightYear"></span> Abuja Chamber of Commerce</p>
       </div>
     </div>
   </footer>
 
-  <script src="scripts/directory.js"></script>
+  <!-- defer keeps script out of render path; no async needed -->
+  <script src="scripts/directory.js" defer></script>
 </body>
 </html>
