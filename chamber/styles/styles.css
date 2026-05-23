@@ -1,0 +1,697 @@
+/* ============================================
+   Abuja Chamber of Commerce – styles.css
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+/* --- CSS Custom Properties --- */
+:root {
+  --color-primary: #1a3a2a;
+  --color-primary-light: #2a5c3f;
+  --color-accent: #c8a84b;
+  --color-accent-light: #e2c97e;
+  --color-bg: #f7f4ef;
+  --color-bg-alt: #edeae3;
+  --color-text: #1c1c1c;
+  --color-text-muted: #555;
+  --color-white: #ffffff;
+  --color-border: #d8d4cc;
+  --color-gold-badge: #b8860b;
+  --color-silver-badge: #6c6c6c;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.16);
+
+  --max-width: 1200px;
+  --transition: 0.25s ease;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* --- Utility --- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  object-fit: cover;
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.brand-logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.brand-text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.brand-text p {
+  font-size: 0.72rem;
+  color: var(--color-accent-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* --- Hamburger --- */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Navigation --- */
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.site-nav a {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.88);
+  transition: background var(--transition), color var(--transition);
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 40, 25, 0.92) 0%,
+    rgba(15, 40, 25, 0.55) 50%,
+    rgba(15, 40, 25, 0.2) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 3rem 1.25rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: 0.75rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--color-white);
+  max-width: 680px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.82);
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 16px rgba(200,168,75,0.4);
+}
+
+.cta-btn:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(200,168,75,0.5);
+}
+
+/* ============================================
+   MAIN CONTENT LAYOUT
+   ============================================ */
+.home-main {
+  padding: 3rem 0 4rem;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .home-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .spotlight-section {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-grid {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .events-section { grid-column: 1; }
+  .weather-section { grid-column: 2; grid-row: 1 / 3; }
+  .spotlight-section { grid-column: 1; }
+}
+
+/* ============================================
+   WEATHER SECTION
+   ============================================ */
+.weather-section {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+}
+
+.weather-section .section-title {
+  color: var(--color-accent-light);
+}
+
+.weather-section .section-title::after {
+  background: var(--color-accent);
+}
+
+.weather-location {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.25rem;
+}
+
+.weather-current {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.weather-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.weather-temp {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-accent-light);
+}
+
+.weather-desc {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
+}
+
+.weather-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 1.25rem 0;
+}
+
+.forecast-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: 0.9rem;
+  font-weight: 600;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.forecast-day {
+  background: rgba(255,255,255,0.07);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+}
+
+.forecast-day-name {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.3rem;
+}
+
+.forecast-day-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.forecast-day-temp {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-accent-light);
+}
+
+.weather-loading, .weather-error {
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* ============================================
+   EVENTS SECTION
+   ============================================ */
+.events-section {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  border-left: 3px solid var(--color-accent);
+  transition: box-shadow var(--transition);
+}
+
+.event-card:hover { box-shadow: var(--shadow-sm); }
+
+.event-date {
+  text-align: center;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.25rem;
+}
+
+.event-date .day {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-accent-light);
+}
+
+.event-date .month {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+}
+
+.event-info h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 0.2rem;
+}
+
+.event-info p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.event-info .event-location {
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+/* ============================================
+   SPOTLIGHT SECTION
+   ============================================ */
+.spotlight-section {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.spotlight-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.spotlight-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.spotlight-logo-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--color-accent-light);
+  border: 2px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.spotlight-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+
+.spotlight-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.badge-gold {
+  background: #fdf3d0;
+  color: var(--color-gold-badge);
+  border: 1px solid #e8c84a;
+}
+
+.badge-silver {
+  background: #f2f2f2;
+  color: var(--color-silver-badge);
+  border: 1px solid #c0c0c0;
+}
+
+.spotlight-info {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  width: 100%;
+}
+
+.spotlight-info span { display: block; }
+
+.spotlight-website {
+  font-size: 0.82rem;
+  color: var(--color-primary-light);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.spotlight-website:hover { color: var(--color-accent); }
+
+.spotlight-loading {
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background: var(--color-primary);
+  color: rgba(255,255,255,0.8);
+  padding: 2.5rem 0 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.footer-brand h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-white);
+  margin-bottom: 0.4rem;
+}
+
+.footer-brand p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.footer-col h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-light);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col li { margin-bottom: 0.4rem; }
+
+.footer-col a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.72);
+  transition: color var(--transition);
+}
+
+.footer-col a:hover { color: var(--color-accent-light); }
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ============================================
+   RESPONSIVE – MOBILE NAVIGATION
+   ============================================ */
+@media (max-width: 767px) {
+  .nav-toggle { display: flex; }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-primary-light);
+    padding: 1rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .site-nav.open { display: block; }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+
+  .site-nav a {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .site-header { position: relative; }
+}

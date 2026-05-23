@@ -1,0 +1,52 @@
+/* directory.css */
+.directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.dir-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: box-shadow var(--transition);
+}
+
+.dir-card:hover { box-shadow: var(--shadow-md); }
+
+.dir-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.dir-card p {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.dir-card a {
+  font-size: 0.84rem;
+  color: var(--color-primary-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dir-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: fit-content;
+}
+
+.dir-badge-gold   { background: #fdf3d0; color: #b8860b; border: 1px solid #e8c84a; }
+.dir-badge-silver { background: #f2f2f2; color: #6c6c6c; border: 1px solid #c0c0c0; }
+.dir-badge-bronze { background: #fff4ec; color: #a05020; border: 1px solid #d4884a; }
