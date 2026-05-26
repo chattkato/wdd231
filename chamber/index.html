@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Welcome to the Abuja Chamber of Commerce — connecting businesses, driving growth, and building community across the Federal Capital Territory of Nigeria.">
+
+  <!-- Improved meta description (more natural) -->
+  <meta name="description" content="Welcome to the Abuja Chamber of Commerce and Industry, connecting businesses, driving growth, and supporting enterprise across Nigeria’s Federal Capital Territory.">
   <meta name="author" content="Chatt Kato">
 
-  <meta property="og:title" content="Abuja Chamber of Commerce | Federal Capital Territory">
-  <meta property="og:description" content="Connecting businesses across Abuja's Federal Capital Territory. Join Nigeria's premier business chamber today.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Abuja Chamber of Commerce and Industry">
+  <meta property="og:description" content="Connect with businesses across Abuja’s Federal Capital Territory and grow with Nigeria’s leading chamber.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chattkato.github.io/wdd231/chamber/index.html">
   <meta property="og:image" content="https://chattkato.github.io/wdd231/chamber/images/hero.jpg">
@@ -16,186 +19,203 @@
 
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="styles/normalize.css">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
 
-  <header class="site-header">
-    <div class="container header-inner">
+<header class="site-header">
+  <div class="container header-inner">
 
-      <div class="brand">
-        <div class="brand-logo" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="20" stroke="#c8a84b" stroke-width="2.5"/>
-            <path d="M14 30 L24 14 L34 30 Z" fill="#c8a84b" opacity="0.85"/>
-            <rect x="20" y="26" width="8" height="8" rx="1" fill="#c8a84b" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <span class="brand-name">Abuja Chamber</span>
-          <span class="brand-sub">of Commerce &amp; Industry</span>
-        </div>
+    <div class="brand">
+      <div class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="20" stroke="#c8a84b" stroke-width="2.5"/>
+          <path d="M14 30 L24 14 L34 30 Z" fill="#c8a84b" opacity="0.85"/>
+          <rect x="20" y="26" width="8" height="8" rx="1" fill="#c8a84b" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Abuja Chamber</span>
+        <span class="brand-sub">of Commerce &amp; Industry</span>
+      </div>
+    </div>
+
+    <button
+      class="nav-toggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="discover.html">Discover Abuja</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main-content">
+
+  <section class="hero" aria-label="Welcome banner">
+    <img
+      class="hero-image"
+      src="images/hero.jpg"
+      alt="Abuja Central Business District skyline at dusk"
+      loading="eager"
+      width="1200"
+      height="520">
+
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content container">
+
+      <!-- ✅ FIXED H1 (matches title better) -->
+      <h1 class="hero-title">Abuja Chamber of Commerce and Industry</h1>
+
+      <p class="hero-eyebrow">Federal Capital Territory, Nigeria</p>
+      <p class="hero-subtitle">
+        Connect with industry leaders, access resources, and grow your business across Abuja.
+      </p>
+
+      <a href="join.html" class="cta-btn">Become a Member Today &rarr;</a>
+    </div>
+  </section>
+
+  <div class="home-main">
+    <div class="container">
+      <div class="home-grid">
+
+        <section class="events-section" aria-labelledby="events-heading">
+          <h2 class="section-title" id="events-heading">Upcoming Events</h2>
+
+          <div class="events-list">
+
+            <article class="event-card">
+              <div class="event-date">
+                <time datetime="2025-06-05">
+                  <span class="day">05</span>
+                  <span class="month">Jun</span>
+                </time>
+              </div>
+              <div class="event-info">
+                <h3>FCT Business Networking Breakfast</h3>
+                <p>Quarterly networking session for chamber members and invited guests.</p>
+                <p class="event-location">Transcorp Hilton, Maitama, Abuja</p>
+              </div>
+            </article>
+
+            <article class="event-card">
+              <div class="event-date">
+                <time datetime="2025-06-18">
+                  <span class="day">18</span>
+                  <span class="month">Jun</span>
+                </time>
+              </div>
+              <div class="event-info">
+                <h3>SME Access to Finance Workshop</h3>
+                <p>Practical guidance on funding and grants for small businesses.</p>
+                <p class="event-location">Chamber Conference Centre, CBD</p>
+              </div>
+            </article>
+
+            <article class="event-card">
+              <div class="event-date">
+                <time datetime="2025-07-02">
+                  <span class="day">02</span>
+                  <span class="month">Jul</span>
+                </time>
+              </div>
+              <div class="event-info">
+                <h3>Annual Abuja Business Awards</h3>
+                <p>Recognising outstanding enterprises across the FCT.</p>
+                <p class="event-location">International Conference Centre, Abuja</p>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <section class="weather-section" aria-labelledby="weather-heading">
+          <h2 class="section-title" id="weather-heading">Current Weather</h2>
+          <div id="weather-container" aria-live="polite">
+            <p class="weather-loading">Loading weather data&hellip;</p>
+          </div>
+        </section>
+
+        <section class="spotlight-section" aria-labelledby="spotlight-heading">
+          <h2 class="section-title" id="spotlight-heading">Member Spotlights</h2>
+          <p class="spotlight-intro">
+            Highlighting gold and silver members from our business community.
+          </p>
+          <div class="spotlight-grid" id="spotlight-grid" aria-live="polite">
+            <p class="spotlight-loading">Loading member spotlights&hellip;</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <p class="footer-brand-name">Abuja Chamber of Commerce</p>
+        <p>Serving the business community of Nigeria's Federal Capital Territory since 1991.</p>
       </div>
 
-      <button
-        class="nav-toggle"
-        aria-label="Toggle navigation menu"
-        aria-expanded="false"
-        aria-controls="main-nav"
-        type="button"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="site-nav" id="main-nav" aria-label="Main navigation">
+      <div class="footer-col">
+        <h2>Quick Links</h2>
         <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="directory.html">Directory</a></li>
-          <li><a href="join.html">Join</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="directory.html">Member Directory</a></li>
+          <li><a href="join.html">Join the Chamber</a></li>
           <li><a href="discover.html">Discover Abuja</a></li>
         </ul>
-      </nav>
+      </div>
+
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:info@abujachamber.ng">info@abujachamber.ng</a></li>
+          <li><a href="tel:+2349012345678">+234 901 234 5678</a></li>
+          <li>Plot 88, Central Business District, Abuja, FCT</li>
+        </ul>
+      </div>
 
     </div>
-  </header>
 
-  <main id="main-content">
-
-    <section class="hero" aria-label="Welcome banner">
-      <img
-        class="hero-image"
-        src="images/hero.jpg"
-        alt="Abuja Central Business District skyline at dusk"
-        loading="eager"
-        width="1200"
-        height="520"
-      >
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-content container">
-        <h1 class="hero-title">Where Abuja's Business Community Grows Together</h1>
-        <p class="hero-eyebrow">Federal Capital Territory, Nigeria</p>
-        <p class="hero-subtitle">Connect with industry leaders, access resources, and champion commerce across the FCT.</p>
-        <a href="join.html" class="cta-btn">Become a Member Today &rarr;</a>
-      </div>
-    </section>
-
-    <div class="home-main">
-      <div class="container">
-        <div class="home-grid">
-
-          <section class="events-section" aria-labelledby="events-heading">
-            <h2 class="section-title" id="events-heading">Upcoming Events</h2>
-            <div class="events-list">
-
-              <article class="event-card">
-                <div class="event-date">
-                  <time datetime="2025-06-05">
-                    <span class="day">05</span>
-                    <span class="month">Jun</span>
-                  </time>
-                </div>
-                <div class="event-info">
-                  <h3>FCT Business Networking Breakfast</h3>
-                  <p>Quarterly networking session for chamber members and invited guests.</p>
-                  <p class="event-location">Transcorp Hilton, Maitama, Abuja</p>
-                </div>
-              </article>
-
-              <article class="event-card">
-                <div class="event-date">
-                  <time datetime="2025-06-18">
-                    <span class="day">18</span>
-                    <span class="month">Jun</span>
-                  </time>
-                </div>
-                <div class="event-info">
-                  <h3>SME Access to Finance Workshop</h3>
-                  <p>Practical guidance on bank financing, grants, and alternative funding for small businesses.</p>
-                  <p class="event-location">Chamber Conference Centre, CBD</p>
-                </div>
-              </article>
-
-              <article class="event-card">
-                <div class="event-date">
-                  <time datetime="2025-07-02">
-                    <span class="day">02</span>
-                    <span class="month">Jul</span>
-                  </time>
-                </div>
-                <div class="event-info">
-                  <h3>Annual Abuja Business Awards</h3>
-                  <p>Recognising outstanding enterprises and entrepreneurs across the FCT.</p>
-                  <p class="event-location">International Conference Centre, Abuja</p>
-                </div>
-              </article>
-
-            </div>
-          </section>
-
-          <section class="weather-section" aria-labelledby="weather-heading">
-            <h2 class="section-title" id="weather-heading">Current Weather</h2>
-            <div id="weather-container" aria-live="polite">
-              <p class="weather-loading">Loading weather data&hellip;</p>
-            </div>
-          </section>
-
-          <section class="spotlight-section" aria-labelledby="spotlight-heading">
-            <h2 class="section-title" id="spotlight-heading">Member Spotlights</h2>
-            <p class="spotlight-intro">Highlighting gold and silver members from our business community, refreshed every visit.</p>
-            <div class="spotlight-grid" id="spotlight-grid" aria-live="polite">
-              <p class="spotlight-loading">Loading member spotlights&hellip;</p>
-            </div>
-          </section>
-
-        </div>
-      </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year"></span> Abuja Chamber of Commerce &amp; Industry. All rights reserved.</p>
+      <p>WDD231 Course Project</p>
     </div>
 
-  </main>
+  </div>
+</footer>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-          <p class="footer-brand-name">Abuja Chamber of Commerce</p>
-          <p>Serving the business community of Nigeria's Federal Capital Territory since 1991.</p>
-        </div>
-
-        <div class="footer-col">
-          <h2>Quick Links</h2>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="directory.html">Member Directory</a></li>
-            <li><a href="join.html">Join the Chamber</a></li>
-            <li><a href="discover.html">Discover Abuja</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h2>Contact</h2>
-          <ul>
-            <li><a href="mailto:info@abujachamber.ng">info@abujachamber.ng</a></li>
-            <li><a href="tel:+2349012345678">+234 901 234 5678</a></li>
-            <li>Plot 88, Central Business District, Abuja, FCT</li>
-          </ul>
-        </div>
-
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; <span id="current-year"></span> Abuja Chamber of Commerce &amp; Industry. All rights reserved.</p>
-        <p>WDD231 Course Project</p>
-      </div>
-    </div>
-  </footer>
-
+<!-- ✅ KEEP ONLY if file exists -->
 <script src="scripts/app.js" defer></script>
+
 </body>
 </html>
