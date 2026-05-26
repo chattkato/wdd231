@@ -56,7 +56,10 @@ function extractDailyForecasts(data) {
     const dStr = d.toDateString();
     const hr   = d.getHours();
     if (dStr === today || seen.has(dStr)) continue;
-    if (hr >= 11 && hr <= 14) { seen.add(dStr); days.push(item); }
+    if (hr >= 11 && hr <= 14) {
+      seen.add(dStr);
+      days.push(item);
+    }
     if (days.length === 3) break;
   }
 
@@ -220,6 +223,7 @@ async function loadSpotlights() {
 // ============================================
 // NAV TOGGLE
 // ============================================
+
 function initNavToggle() {
   const toggle = document.querySelector('.nav-toggle');
   const nav    = document.querySelector('.site-nav');
@@ -243,6 +247,7 @@ function initNavToggle() {
 // ============================================
 // INIT
 // ============================================
+
 function setCurrentYear() {
   const el = document.getElementById('current-year');
   if (el) el.textContent = new Date().getFullYear();
