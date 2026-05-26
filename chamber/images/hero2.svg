@@ -1,0 +1,98 @@
+<svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abuja Central Business District skyline at dusk">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="45%" stop-color="#1a3a5c"/>
+      <stop offset="75%" stop-color="#c45c1a"/>
+      <stop offset="100%" stop-color="#e8a030"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8a030" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#e8a030" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bldg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e2d3d"/>
+      <stop offset="100%" stop-color="#111820"/>
+    </linearGradient>
+    <linearGradient id="bldg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#243040"/>
+      <stop offset="100%" stop-color="#141e28"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1a10"/>
+      <stop offset="100%" stop-color="#060d08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="520" fill="url(#sky)"/>
+  <ellipse cx="600" cy="390" rx="600" ry="160" fill="url(#glow)"/>
+  <circle cx="120" cy="60" r="1.2" fill="white" opacity="0.7"/>
+  <circle cx="280" cy="35" r="1" fill="white" opacity="0.6"/>
+  <circle cx="450" cy="50" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="680" cy="28" r="1" fill="white" opacity="0.5"/>
+  <circle cx="820" cy="55" r="1.2" fill="white" opacity="0.7"/>
+  <circle cx="970" cy="40" r="1" fill="white" opacity="0.6"/>
+  <circle cx="1080" cy="70" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="200" cy="90" r="0.8" fill="white" opacity="0.5"/>
+  <circle cx="550" cy="80" r="0.9" fill="white" opacity="0.6"/>
+  <circle cx="740" cy="90" r="1" fill="white" opacity="0.7"/>
+  <rect x="50"  y="280" width="80" height="150" fill="#152030" opacity="0.6"/>
+  <rect x="90"  y="260" width="50" height="170" fill="#1a2838" opacity="0.6"/>
+  <rect x="160" y="295" width="60" height="135" fill="#152030" opacity="0.6"/>
+  <rect x="980" y="275" width="70" height="155" fill="#152030" opacity="0.6"/>
+  <rect x="1020" y="255" width="55" height="175" fill="#1a2838" opacity="0.6"/>
+  <rect x="1080" y="290" width="65" height="140" fill="#152030" opacity="0.6"/>
+  <rect x="200" y="220" width="90" height="210" fill="url(#bldg2)"/>
+  <rect x="230" y="195" width="55" height="235" fill="url(#bldg1)"/>
+  <rect x="240" y="210" width="8" height="6" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="255" y="210" width="8" height="6" fill="#e8c84a" opacity="0.4" rx="1"/>
+  <rect x="270" y="210" width="8" height="6" fill="#e8c84a" opacity="0.7" rx="1"/>
+  <rect x="240" y="225" width="8" height="6" fill="#e8c84a" opacity="0.3" rx="1"/>
+  <rect x="255" y="225" width="8" height="6" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="270" y="225" width="8" height="6" fill="#e8c84a" opacity="0.5" rx="1"/>
+  <rect x="240" y="240" width="8" height="6" fill="#e8c84a" opacity="0.5" rx="1"/>
+  <rect x="255" y="240" width="8" height="6" fill="#e8c84a" opacity="0.4" rx="1"/>
+  <rect x="270" y="240" width="8" height="6" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="880" y="215" width="95" height="215" fill="url(#bldg2)"/>
+  <rect x="905" y="190" width="58" height="240" fill="url(#bldg1)"/>
+  <rect x="915" y="205" width="8" height="6" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="930" y="205" width="8" height="6" fill="#e8c84a" opacity="0.4" rx="1"/>
+  <rect x="945" y="205" width="8" height="6" fill="#e8c84a" opacity="0.7" rx="1"/>
+  <rect x="915" y="220" width="8" height="6" fill="#e8c84a" opacity="0.3" rx="1"/>
+  <rect x="930" y="220" width="8" height="6" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="945" y="220" width="8" height="6" fill="#e8c84a" opacity="0.5" rx="1"/>
+  <rect x="530" y="120" width="140" height="310" fill="url(#bldg1)"/>
+  <polygon points="600,50 592,125 608,125" fill="#1e3040"/>
+  <line x1="600" y1="50" x2="600" y2="58" stroke="#e8c84a" stroke-width="2"/>
+  <rect x="545" y="135" width="10" height="7" fill="#e8c84a" opacity="0.7" rx="1"/>
+  <rect x="562" y="135" width="10" height="7" fill="#e8c84a" opacity="0.5" rx="1"/>
+  <rect x="579" y="135" width="10" height="7" fill="#e8c84a" opacity="0.8" rx="1"/>
+  <rect x="596" y="135" width="10" height="7" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="613" y="135" width="10" height="7" fill="#e8c84a" opacity="0.4" rx="1"/>
+  <rect x="630" y="135" width="10" height="7" fill="#e8c84a" opacity="0.7" rx="1"/>
+  <rect x="545" y="152" width="10" height="7" fill="#e8c84a" opacity="0.4" rx="1"/>
+  <rect x="562" y="152" width="10" height="7" fill="#e8c84a" opacity="0.7" rx="1"/>
+  <rect x="579" y="152" width="10" height="7" fill="#e8c84a" opacity="0.5" rx="1"/>
+  <rect x="596" y="152" width="10" height="7" fill="#e8c84a" opacity="0.8" rx="1"/>
+  <rect x="613" y="152" width="10" height="7" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="630" y="152" width="10" height="7" fill="#e8c84a" opacity="0.3" rx="1"/>
+  <rect x="440" y="290" width="160" height="140" fill="#172535"/>
+  <ellipse cx="520" cy="292" rx="80" ry="35" fill="#1e3545"/>
+  <ellipse cx="520" cy="285" rx="50" ry="18" fill="none" stroke="#c8a84b" stroke-width="1.5" opacity="0.4"/>
+  <rect x="455" y="310" width="9" height="7" fill="#e8c84a" opacity="0.5" rx="1"/>
+  <rect x="472" y="310" width="9" height="7" fill="#e8c84a" opacity="0.6" rx="1"/>
+  <rect x="489" y="310" width="9" height="7" fill="#e8c84a" opacity="0.4" rx="1"/>
+  <rect x="506" y="310" width="9" height="7" fill="#e8c84a" opacity="0.7" rx="1"/>
+  <rect x="380" y="250" width="75" height="180" fill="url(#bldg2)"/>
+  <rect x="750" y="245" width="78" height="185" fill="url(#bldg2)"/>
+  <rect x="0"   y="430" width="1200" height="90" fill="url(#ground)"/>
+  <ellipse cx="80"   cy="435" rx="55" ry="42" fill="#0a1f0e"/>
+  <ellipse cx="155"  cy="440" rx="45" ry="38" fill="#0d2512"/>
+  <ellipse cx="50"   cy="445" rx="38" ry="32" fill="#081a0b"/>
+  <ellipse cx="1120" cy="432" rx="58" ry="44" fill="#0a1f0e"/>
+  <ellipse cx="1050" cy="438" rx="46" ry="39" fill="#0d2512"/>
+  <ellipse cx="1155" cy="445" rx="40" ry="33" fill="#081a0b"/>
+  <rect x="0"   y="490" width="1200" height="30" fill="#0a100a"/>
+  <rect x="500" y="494" width="80"   height="4"  fill="#c8a84b" opacity="0.3" rx="2"/>
+  <rect x="600" y="494" width="80"   height="4"  fill="#c8a84b" opacity="0.3" rx="2"/>
+  <rect x="700" y="494" width="80"   height="4"  fill="#c8a84b" opacity="0.3" rx="2"/>
+</svg>
