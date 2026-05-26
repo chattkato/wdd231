@@ -1,4 +1,4 @@
-// directory.js — loads all members into the directory page
+// directory.js
 
 let allMembers  = [];
 let currentView = 'grid';
@@ -10,12 +10,12 @@ const badgeMap = {
 };
 
 function renderDirectory(members, view) {
-  const container = document.getElementById('directory-container');
-  if (!container) return;
+  const el = document.getElementById('directory-container');
+  if (!el) return;
 
   const wrapClass = view === 'list' ? 'directory-list' : 'directory-grid';
 
-  const html = `<div class="${wrapClass}">
+  el.innerHTML = `<div class="${wrapClass}">
     ${members.map(m => {
       const badge = badgeMap[m.membership] || { label: 'Member', cls: '' };
       return `
@@ -31,23 +31,20 @@ function renderDirectory(members, view) {
       `;
     }).join('')}
   </div>`;
-
-  container.innerHTML = html;
 }
 
 async function loadDirectory() {
-  const container = document.getElementById('directory-container');
-  if (!container) return;
-
+  const el = document.getElementById('directory-container');
+  if (!el) return;
   try {
-    const response = await fetch('data/members.json');
-    if (!response.ok) throw new Error('Failed to load members');
-    const data  = await response.json();
-    allMembers  = data.members;
+    const res  = await fetch('data/members.json');
+    if (!res.ok) throw new Error('Failed to load members');
+    const data = await res.json();
+    allMembers = data.members;
     renderDirectory(allMembers, currentView);
-  } catch (error) {
-    console.error('Directory load error:', error);
-    container.innerHTML = '<p>Could not load directory. Please try again later.</p>';
+  } catch (err) {
+    console.error('Directory load error:', err);
+    el.innerHTML = '<p>Could not load directory. Please try again later.</p>';
   }
 }
 

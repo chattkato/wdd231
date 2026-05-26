@@ -1,26 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-
-  <!-- Outer dark green circle -->
-  <circle cx="32" cy="32" r="32" fill="#1B5E7B"/>
-
-  <!-- Gold ring -->
-  <circle cx="32" cy="32" r="27" fill="none" stroke="#C8960C" stroke-width="3"/>
-
-  <!-- Inner white fill area -->
-  <circle cx="32" cy="32" r="24" fill="#ffffff" opacity="0.08"/>
-
-  <!-- Bold letter A centered -->
-  <text
-    x="32"
-    y="43"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="34"
-    font-weight="900"
-    text-anchor="middle"
-    fill="#C8960C"
-    letter-spacing="-1">A</text>
-
-  <!-- Small gold dot below A -->
-  <circle cx="32" cy="53" r="2.5" fill="#E8B832"/>
-
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="8" fill="#1a3a2a"/>
+  <circle cx="24" cy="24" r="18" stroke="#c8a84b" stroke-width="2.5" fill="none"/>
+  <path d="M14 30 L24 14 L34 30 Z" fill="#c8a84b" opacity="0.9"/>
+  <rect x="20" y="26" width="8" height="7" rx="1" fill="#c8a84b" opacity="0.6"/>
 </svg>
