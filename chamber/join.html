@@ -3,16 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Join the Abuja Chamber of Commerce and connect with the FCT business community.">
-  <title>Join | Abuja Chamber of Commerce</title>
+  <meta name="description" content="Join the Abuja Chamber of Commerce and Industry. Connect with Abuja's leading businesses across the Federal Capital Territory.">
+  <meta name="author" content="Abuja Chamber of Commerce">
+
+  <meta property="og:title" content="Join the Chamber | Abuja Chamber of Commerce and Industry">
+  <meta property="og:description" content="Become a member of the Abuja Chamber of Commerce and Industry and grow your business across the FCT.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chattkato.github.io/wdd231/chamber/join.html">
+  <meta property="og:image" content="https://chattkato.github.io/wdd231/chamber/images/hero.svg">
+
+  <title>Join | Abuja Chamber of Commerce and Industry</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/normalize.css">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="container header-inner">
+
       <div class="brand">
         <div class="brand-logo" aria-hidden="true">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,46 +37,85 @@
           </svg>
         </div>
         <div class="brand-text">
-          <h1>Abuja Chamber</h1>
-          <p>of Commerce &amp; Industry</p>
+          <span class="brand-name">Abuja Chamber</span>
+          <span class="brand-sub">of Commerce &amp; Industry</span>
         </div>
       </div>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-        <span></span><span></span><span></span>
+
+      <button
+        class="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
       <nav class="site-nav" id="main-nav" aria-label="Main navigation">
-        <ul>
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
           <li><a href="directory.html">Directory</a></li>
           <li><a href="join.html" aria-current="page">Join</a></li>
           <li><a href="discover.html">Discover Abuja</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
-  <main style="padding:4rem 0; min-height:60vh;">
-    <div class="container">
-      <h2 class="section-title">Join the Chamber</h2>
-      <p style="color:var(--color-text-muted);max-width:540px;">
-        Membership application form coming soon. Contact us at
-        <a href="mailto:info@abujachamber.ng" style="color:var(--color-primary-light);font-weight:600;">
-          info@abujachamber.ng
-        </a>
-        to get started.
-      </p>
+  <main id="main-content">
+    <div class="page-body">
+      <div class="container">
+        <h1 class="section-title">Join the Chamber</h1>
+        <p class="page-intro">
+          Membership application form coming soon. Contact us at
+          <a href="mailto:info@abujachamber.ng" class="inline-link">info@abujachamber.ng</a>
+          to get started.
+        </p>
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <p class="footer-brand-name">Abuja Chamber of Commerce</p>
+          <p>Serving the business community of Nigeria's Federal Capital Territory since 1991.</p>
+        </div>
+
+        <div class="footer-col">
+          <h2>Quick Links</h2>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="directory.html">Member Directory</a></li>
+            <li><a href="join.html">Join the Chamber</a></li>
+            <li><a href="discover.html">Discover Abuja</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Contact</h2>
+          <ul role="list">
+            <li><a href="mailto:info@abujachamber.ng">info@abujachamber.ng</a></li>
+            <li><a href="tel:+2349012345678">+234 901 234 5678</a></li>
+            <li>Plot 88, Central Business District, Abuja, FCT</li>
+          </ul>
+        </div>
+
+      </div>
+
       <div class="footer-bottom">
-        <p>&copy; <span id="current-year"></span> Abuja Chamber of Commerce &amp; Industry.</p>
+        <p>&copy; <span id="current-year"></span> Abuja Chamber of Commerce &amp; Industry. All rights reserved.</p>
         <p>WDD231 Course Project</p>
       </div>
     </div>
   </footer>
 
-  <script src="scripts/app.js"></script>
+  <script src="scripts/app.js" defer></script>
 </body>
 </html>

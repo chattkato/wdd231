@@ -1,13 +1,13 @@
 // ============================================
 // Chamber of Commerce – app.js
-// Weather API + Member Spotlights
 // ============================================
 
-// Replace with your own OpenWeatherMap API key
+// Replace 'YOUR_API_KEY_HERE' with your OpenWeatherMap API key
+// Get a free key at: https://openweathermap.org/api
 const WEATHER_API_KEY = 'YOUR_API_KEY_HERE';
-const WEATHER_CITY = 'Abuja';
+const WEATHER_CITY    = 'Abuja';
 const WEATHER_COUNTRY = 'NG';
-const WEATHER_UNITS = 'metric';
+const WEATHER_UNITS   = 'metric';
 
 const WEATHER_ICONS = {
   '01d': '☀️', '01n': '🌙',
@@ -26,6 +26,7 @@ function getWeatherIcon(iconCode) {
 }
 
 function capitalizeFirst(str) {
+  if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -49,14 +50,14 @@ async function fetchForecast() {
 }
 
 function extractDailyForecasts(forecastData) {
-  const today = new Date().toDateString();
-  const seen = new Set();
-  const days = [];
+  const today    = new Date().toDateString();
+  const seen     = new Set();
+  const days     = [];
 
   for (const item of forecastData.list) {
-    const date = new Date(item.dt_txt);
+    const date    = new Date(item.dt_txt);
     const dateStr = date.toDateString();
-    const hour = date.getHours();
+    const hour    = date.getHours();
 
     if (dateStr === today) continue;
     if (seen.has(dateStr)) continue;
@@ -67,6 +68,7 @@ function extractDailyForecasts(forecastData) {
     if (days.length === 3) break;
   }
 
+  // Fallback: grab first entry per remaining day if noon slots are missing
   if (days.length < 3) {
     const fallbackSeen = new Set(days.map(d => new Date(d.dt_txt).toDateString()));
     for (const item of forecastData.list) {
@@ -98,16 +100,16 @@ function renderWeather(current, forecasts) {
       <div class="forecast-day">
         <div class="forecast-day-name">${dayName}</div>
         <div class="forecast-day-icon">${dayIcon}</div>
-        <div class="forecast-day-temp">${dayTemp}°C</div>
+        <div class="forecast-day-temp">${dayTemp}&deg;C</div>
       </div>
     `;
   }).join('');
 
   container.innerHTML = `
-    <p class="weather-location">📍 ${WEATHER_CITY}, Nigeria</p>
+    <p class="weather-location">&#128205; ${WEATHER_CITY}, Nigeria</p>
     <div class="weather-current">
       <div class="weather-icon">${icon}</div>
-      <div class="weather-temp">${temp}°C</div>
+      <div class="weather-temp">${temp}&deg;C</div>
     </div>
     <p class="weather-desc">${desc}</p>
     <hr class="weather-divider">
@@ -116,15 +118,15 @@ function renderWeather(current, forecasts) {
   `;
 }
 
-function renderWeatherError() {
+function renderWeatherFallback() {
   const container = document.getElementById('weather-container');
   if (!container) return;
 
   container.innerHTML = `
-    <p class="weather-location">📍 ${WEATHER_CITY}, Nigeria</p>
+    <p class="weather-location">&#128205; ${WEATHER_CITY}, Nigeria</p>
     <div class="weather-current">
-      <div class="weather-icon">☀️</div>
-      <div class="weather-temp">33°C</div>
+      <div class="weather-icon">&#9728;&#65039;</div>
+      <div class="weather-temp">33&deg;C</div>
     </div>
     <p class="weather-desc">Sunny with light breeze</p>
     <hr class="weather-divider">
@@ -132,21 +134,21 @@ function renderWeatherError() {
     <div class="forecast-grid">
       <div class="forecast-day">
         <div class="forecast-day-name">Fri</div>
-        <div class="forecast-day-icon">🌤️</div>
-        <div class="forecast-day-temp">34°C</div>
+        <div class="forecast-day-icon">&#127780;&#65039;</div>
+        <div class="forecast-day-temp">34&deg;C</div>
       </div>
       <div class="forecast-day">
         <div class="forecast-day-name">Sat</div>
-        <div class="forecast-day-icon">🌦️</div>
-        <div class="forecast-day-temp">29°C</div>
+        <div class="forecast-day-icon">&#127750;&#65039;</div>
+        <div class="forecast-day-temp">29&deg;C</div>
       </div>
       <div class="forecast-day">
         <div class="forecast-day-name">Sun</div>
-        <div class="forecast-day-icon">⛅</div>
-        <div class="forecast-day-temp">31°C</div>
+        <div class="forecast-day-icon">&#9925;</div>
+        <div class="forecast-day-temp">31&deg;C</div>
       </div>
     </div>
-    <p style="font-size:0.7rem;opacity:0.5;margin-top:0.75rem;">Add API key in scripts/app.js for live data</p>
+    <p class="weather-api-note">Add your OpenWeatherMap API key in scripts/app.js for live data.</p>
   `;
 }
 
@@ -155,11 +157,12 @@ async function loadWeather() {
   if (!container) return;
 
   if (!WEATHER_API_KEY || WEATHER_API_KEY === 'YOUR_API_KEY_HERE') {
-    renderWeatherError();
+    renderWeatherFallback();
     return;
   }
 
-  container.innerHTML = '<p class="weather-loading">Loading weather data…</p>';
+  container.innerHTML = '<p class="weather-loading">Loading weather data&hellip;</p>';
+
   try {
     const [current, forecastData] = await Promise.all([
       fetchCurrentWeather(),
@@ -169,7 +172,7 @@ async function loadWeather() {
     renderWeather(current, forecasts);
   } catch (error) {
     console.error('Weather load failed:', error);
-    renderWeatherError();
+    renderWeatherFallback();
   }
 }
 
@@ -196,7 +199,7 @@ function renderSpotlights(members) {
 
   const eligible = members.filter(m => m.membership >= 2);
   const shuffled = shuffleArray(eligible);
-  const count = Math.random() < 0.5 ? 2 : 3;
+  const count    = Math.random() < 0.5 ? 2 : 3;
   const selected = shuffled.slice(0, Math.min(count, shuffled.length));
 
   if (selected.length === 0) {
@@ -205,7 +208,7 @@ function renderSpotlights(members) {
   }
 
   container.innerHTML = selected.map(member => {
-    const initials = getInitials(member.name);
+    const initials   = getInitials(member.name);
     const badgeClass = member.membership === 3 ? 'badge-gold' : 'badge-silver';
 
     return `
@@ -214,8 +217,8 @@ function renderSpotlights(members) {
         <p class="spotlight-name">${member.name}</p>
         <span class="spotlight-badge ${badgeClass}">${member.membershipLabel} Member</span>
         <div class="spotlight-info">
-          <span>📞 ${member.phone}</span>
-          <span>📍 ${member.address}</span>
+          <span>&#128222; ${member.phone}</span>
+          <span>&#128205; ${member.address}</span>
         </div>
         <a href="${member.website}" target="_blank" rel="noopener noreferrer" class="spotlight-website">
           ${member.website.replace('https://', '')}
@@ -229,7 +232,7 @@ async function loadSpotlights() {
   const container = document.getElementById('spotlight-grid');
   if (!container) return;
 
-  container.innerHTML = '<p class="spotlight-loading">Loading member spotlights…</p>';
+  container.innerHTML = '<p class="spotlight-loading">Loading member spotlights&hellip;</p>';
 
   try {
     const response = await fetch('data/members.json');
@@ -247,7 +250,7 @@ async function loadSpotlights() {
 // ============================================
 function initNavToggle() {
   const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.site-nav');
+  const nav    = document.querySelector('.site-nav');
   if (!toggle || !nav) return;
 
   toggle.addEventListener('click', () => {
@@ -266,7 +269,7 @@ function initNavToggle() {
 }
 
 // ============================================
-// CURRENT YEAR FOR FOOTER
+// FOOTER YEAR
 // ============================================
 function setCurrentYear() {
   const el = document.getElementById('current-year');

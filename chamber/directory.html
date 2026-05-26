@@ -3,118 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Abuja Chamber of Commerce Member Directory. Discover businesses and organizations shaping Nigeria's Federal Capital Territory.">
-  <meta name="author" content="Chatt Kato">
+  <meta name="description" content="Browse the Abuja Chamber of Commerce member directory. Find local businesses, contact details, and membership levels across the Federal Capital Territory.">
+  <meta name="author" content="Abuja Chamber of Commerce">
 
-  <title>Member Directory | Abuja Chamber of Commerce</title>
+  <meta property="og:title" content="Member Directory | Abuja Chamber of Commerce and Industry">
+  <meta property="og:description" content="Find businesses registered with the Abuja Chamber of Commerce across the Federal Capital Territory.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chattkato.github.io/wdd231/chamber/directory.html">
+  <meta property="og:image" content="https://chattkato.github.io/wdd231/chamber/images/hero.svg">
 
-  <!-- Favicon -->
+  <title>Member Directory | Abuja Chamber of Commerce and Industry</title>
+
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Member Directory | Abuja Chamber of Commerce">
-  <meta property="og:description" content="Discover businesses shaping Nigeria's Federal Capital Territory. Browse gold, silver, and member-level companies in Abuja.">
-  <meta property="og:image" content="https://chattkato.github.io/wdd231/chamber/images/og-image.png">
-  <meta property="og:url" content="https://chattkato.github.io/wdd231/chamber/directory.html">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="styles/normalize.css">
-  <link rel="stylesheet" href="styles/small.css">
-  <link rel="stylesheet" href="styles/larger.css">
-
-  <!-- JavaScript -->
-  <script src="scripts/directory.js" defer></script>
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
-  <header>
-    <div class="header-inner">
-      <div class="logo-block">
-        <img src="images/favicon.svg" alt="Abuja Chamber of Commerce logo" class="site-logo">
-        <div class="logo-text">
-          <span class="logo-title">Abuja</span>
-          <span class="logo-sub">Chamber of Commerce</span>
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="20" stroke="#c8a84b" stroke-width="2.5"/>
+            <path d="M14 30 L24 14 L34 30 Z" fill="#c8a84b" opacity="0.85"/>
+            <rect x="20" y="26" width="8" height="8" rx="1" fill="#c8a84b" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Abuja Chamber</span>
+          <span class="brand-sub">of Commerce &amp; Industry</span>
         </div>
       </div>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button
+        class="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
-      <nav id="mainNav" aria-label="Main navigation">
-        <ul>
+      <nav class="site-nav" id="main-nav" aria-label="Main navigation">
+        <ul role="list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="directory.html" class="active" aria-current="page">Directory</a></li>
+          <li><a href="directory.html" aria-current="page">Directory</a></li>
           <li><a href="join.html">Join</a></li>
-          <li><a href="discover.html">Discover</a></li>
+          <li><a href="discover.html">Discover Abuja</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
-  <main>
-    <div class="page-title-bar">
-      <h1>Business Directory</h1>
-    </div>
+  <main id="main-content">
+    <div class="page-body">
+      <div class="container">
+        <h1 class="section-title">Member Directory</h1>
+        <p class="page-intro">All registered chamber members across the Federal Capital Territory.</p>
 
-    <section class="directory-section" aria-labelledby="dir-heading">
-      <h2 id="dir-heading" class="sr-only">Member Listings</h2>
+        <div class="directory-controls">
+          <button class="view-btn active" id="grid-btn" aria-pressed="true" type="button">Grid View</button>
+          <button class="view-btn" id="list-btn" aria-pressed="false" type="button">List View</button>
+        </div>
 
-      <!-- Toggle buttons — icon only, centered -->
-      <div class="view-toggle-wrap">
-        <div class="view-toggle" role="group" aria-label="Display view">
-          <button id="gridBtn" class="view-btn active" aria-pressed="true" title="Grid view">
-            <!-- Grid icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-            </svg>
-          </button>
-          <button id="listBtn" class="view-btn" aria-pressed="false" title="List view">
-            <!-- List icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-              <line x1="3" y1="14" x2="21" y2="14"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
+        <div id="directory-container" aria-live="polite">
+          <p>Loading members&hellip;</p>
         </div>
       </div>
-
-      <!-- Member output: JS switches between grid cards and table rows -->
-      <div id="memberDisplay" class="member-grid" role="region" aria-live="polite" aria-label="Chamber members">
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="images/favicon.svg" alt="Abuja Chamber of Commerce" class="footer-logo">
-        <span>Abuja Chamber of Commerce</span>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <p class="footer-brand-name">Abuja Chamber of Commerce</p>
+          <p>Serving the business community of Nigeria's Federal Capital Territory since 1991.</p>
+        </div>
+
+        <div class="footer-col">
+          <h2>Quick Links</h2>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="directory.html">Member Directory</a></li>
+            <li><a href="join.html">Join the Chamber</a></li>
+            <li><a href="discover.html">Discover Abuja</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h2>Contact</h2>
+          <ul role="list">
+            <li><a href="mailto:info@abujachamber.ng">info@abujachamber.ng</a></li>
+            <li><a href="tel:+2349012345678">+234 901 234 5678</a></li>
+            <li>Plot 88, Central Business District, Abuja, FCT</li>
+          </ul>
+        </div>
+
       </div>
-      <div class="footer-contact">
-        <p>Plot 256, Herbert Macaulay Way</p>
-        <p>Central Business District, Abuja, FCT</p>
-        <p><a href="tel:+2349012345678">+234 901 234 5678</a></p>
-        <p><a href="mailto:info@abujachamber.org.ng">info@abujachamber.org.ng</a></p>
-      </div>
-      <div class="footer-dev">
-        <p>Chatt Kato &nbsp;|&nbsp; WDD 231</p>
-        <p>Last Modified: <span id="lastModified"></span></p>
-        <p>&copy; <span id="copyrightYear"></span> Abuja Chamber of Commerce</p>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> Abuja Chamber of Commerce &amp; Industry. All rights reserved.</p>
+        <p>WDD231 Course Project</p>
       </div>
     </div>
   </footer>
 
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/directory.js" defer></script>
 </body>
 </html>

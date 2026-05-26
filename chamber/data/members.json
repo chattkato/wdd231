@@ -1,83 +1,92 @@
-[
-  {
-    "name": "Transcorp Hilton Abuja",
-    "address": "1 Aguiyi Ironsi Street, Maitama, Abuja, FCT",
-    "phone": "+234 9 461 3000",
-    "website": "https://www.transcorphotels.com",
-    "image": "transcorp.png",
-    "membershipLevel": 3,
-    "description": "Abuja's premier five-star hotel and hospitality landmark."
-  },
-  {
-    "name": "Zenith Bank PLC",
-    "address": "Plot 84, Ahmadu Bello Way, Central Business District, Abuja, FCT",
-    "phone": "+234 700 936 4841",
-    "website": "https://www.zenithbank.com",
-    "image": "zenith.png",
-    "membershipLevel": 3,
-    "description": "Leading financial institution providing retail and corporate banking."
-  },
-  {
-    "name": "Chicken Republic Garki",
-    "address": "Plot 299, Ademola Adetokunbo Crescent, Wuse II, Abuja, FCT",
-    "phone": "+234 700 225 4426",
-    "website": "https://www.chickenrepublic.com",
-    "image": "chickenrepublic.png",
-    "membershipLevel": 2,
-    "description": "Nigeria's leading quick-service restaurant chain with multiple Abuja outlets."
-  },
-  {
-    "name": "Jabi Lake Mall",
-    "address": "Plot 1109, Constitution Avenue, Jabi, Abuja, FCT",
-    "phone": "+234 9 291 0000",
-    "website": "https://www.jabilakemall.com",
-    "image": "jabimall.png",
-    "membershipLevel": 3,
-    "description": "Abuja's premier shopping and lifestyle destination overlooking Jabi Lake."
-  },
-  {
-    "name": "Netflare Limited",
-    "address": "Suite 14, Plot 1182, Cadastral Zone, Wuse, Abuja, FCT",
-    "phone": "+234 812 345 6789",
-    "website": "https://www.netflare.ng",
-    "image": "netflare.png",
-    "membershipLevel": 2,
-    "description": "ICT solutions provider offering broadband, enterprise networking, and document management systems."
-  },
-  {
-    "name": "Garki Hospital Abuja",
-    "address": "1 Lagos Street, Garki Area 1, Abuja, FCT",
-    "phone": "+234 9 234 0030",
-    "website": "https://www.garkihospital.org",
-    "image": "garki.png",
-    "membershipLevel": 2,
-    "description": "A foremost government-owned hospital delivering quality healthcare in Abuja."
-  },
-  {
-    "name": "Nile University of Nigeria",
-    "address": "Plot 681, Cadastral Zone C-00, Jabi Airport Road Bypass, Abuja, FCT",
-    "phone": "+234 9 291 6920",
-    "website": "https://www.nileuniversity.edu.ng",
-    "image": "nile.png",
-    "membershipLevel": 3,
-    "description": "A world-class private university offering technology and business programs."
-  },
-  {
-    "name": "Cedar Technologies",
-    "address": "47 Gimbiya Street, Area 11, Garki, Abuja, FCT",
-    "phone": "+234 803 700 1122",
-    "website": "https://www.cedartechng.com",
-    "image": "cedar.png",
-    "membershipLevel": 1,
-    "description": "IT consulting and software development firm serving SMEs across Abuja."
-  },
-  {
-    "name": "Aso Rock Suites",
-    "address": "Plot 1655, Nnamdi Azikiwe Street, Cadastral Zone A0, Abuja, FCT",
-    "phone": "+234 9 870 4400",
-    "website": "https://www.asorocksuites.com",
-    "image": "asorock.png",
-    "membershipLevel": 1,
-    "description": "Boutique business hotel providing comfortable accommodation for corporate travelers."
-  }
-]
+{
+  "members": [
+    {
+      "id": 1,
+      "name": "Apex Solutions Ltd",
+      "address": "12 Wuse Zone 5, Abuja, FCT",
+      "phone": "+234 803 100 2211",
+      "website": "https://apexsolutions.ng",
+      "logo": "images/apex.webp",
+      "membership": 3,
+      "membershipLabel": "Gold",
+      "description": "Enterprise ICT and cloud infrastructure provider."
+    },
+    {
+      "id": 2,
+      "name": "Greenfield Farms Co.",
+      "address": "Plot 7 Galadimawa, Abuja, FCT",
+      "phone": "+234 806 400 5533",
+      "website": "https://greenfieldfarms.ng",
+      "logo": "images/greenfield.webp",
+      "membership": 2,
+      "membershipLabel": "Silver",
+      "description": "Agro-processing and food distribution across FCT."
+    },
+    {
+      "id": 3,
+      "name": "Stellar Logistics NG",
+      "address": "3 Central Business District, Abuja, FCT",
+      "phone": "+234 812 555 7700",
+      "website": "https://stellarlogistics.ng",
+      "logo": "images/stellar.webp",
+      "membership": 3,
+      "membershipLabel": "Gold",
+      "description": "Last-mile and inter-state freight solutions."
+    },
+    {
+      "id": 4,
+      "name": "Pinnacle Realty Group",
+      "address": "18 Maitama District, Abuja, FCT",
+      "phone": "+234 809 300 8844",
+      "website": "https://pinnaclerealty.ng",
+      "logo": "images/pinnacle.webp",
+      "membership": 2,
+      "membershipLabel": "Silver",
+      "description": "Premium residential and commercial property development."
+    },
+    {
+      "id": 5,
+      "name": "BrightPath Capital",
+      "address": "22 Garki Area 11, Abuja, FCT",
+      "phone": "+234 701 900 6622",
+      "website": "https://brightpathcapital.ng",
+      "logo": "images/brightpath.webp",
+      "membership": 3,
+      "membershipLabel": "Gold",
+      "description": "SME financing and investment advisory services."
+    },
+    {
+      "id": 6,
+      "name": "Horizon Health Clinics",
+      "address": "5 Gwarinpa Estate, Abuja, FCT",
+      "phone": "+234 815 220 3399",
+      "website": "https://horizonhealth.ng",
+      "logo": "images/horizon.webp",
+      "membership": 1,
+      "membershipLabel": "Bronze",
+      "description": "Affordable primary healthcare for Abuja communities."
+    },
+    {
+      "id": 7,
+      "name": "SwiftPay Technologies",
+      "address": "9 Life Camp, Abuja, FCT",
+      "phone": "+234 802 770 1100",
+      "website": "https://swiftpay.ng",
+      "logo": "images/swiftpay.webp",
+      "membership": 2,
+      "membershipLabel": "Silver",
+      "description": "Digital payment and fintech solutions for businesses."
+    },
+    {
+      "id": 8,
+      "name": "NovaBuild Contractors",
+      "address": "14 Lugbe District, Abuja, FCT",
+      "phone": "+234 818 660 4455",
+      "website": "https://novabuild.ng",
+      "logo": "images/novabuild.webp",
+      "membership": 1,
+      "membershipLabel": "Bronze",
+      "description": "Civil construction and facilities management."
+    }
+  ]
+}
