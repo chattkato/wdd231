@@ -1,0 +1,340 @@
+/* ============================================================
+   join.css — Join page styles for Abuja Chamber of Commerce
+   ============================================================ */
+
+/* HERO BANNER */
+.join-hero {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-light) 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 3.5rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.join-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.join-hero .hero-eyebrow {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.join-hero p:not(.hero-eyebrow) {
+  font-size: 1rem;
+  opacity: 0.85;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* MAIN LAYOUT */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+main h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--green-dark);
+  margin-bottom: 1.5rem;
+}
+
+.join-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .join-layout {
+    grid-template-columns: 1fr 360px;
+    align-items: start;
+  }
+}
+
+/* FORM */
+.form-section {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+.form-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--green-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  gap: 0.35rem;
+}
+
+label span.req {
+  color: #c0392b;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--green-light);
+  box-shadow: 0 0 0 3px rgba(30, 122, 85, 0.12);
+  background: var(--white);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23555' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  background: var(--green-dark);
+  color: var(--white);
+  border: none;
+  padding: 0.85rem 2.5rem;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+  width: auto;
+}
+
+input[type="submit"]:hover {
+  background: var(--green-light);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MEMBERSHIP CARDS */
+.cards-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--green-dark);
+  margin-bottom: 1.2rem;
+}
+
+.membership-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mem-card {
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: transform 0.25s ease, box-shadow 0.2s;
+}
+
+.mem-card.animate {
+  animation: slideIn 0.5s ease forwards;
+}
+
+.mem-card:nth-child(1) {
+  animation-delay: 0.1s;
+  background: linear-gradient(135deg, #2d6a58, #4a7c6b);
+}
+
+.mem-card:nth-child(2) {
+  animation-delay: 0.2s;
+  background: linear-gradient(135deg, #5a3820, #8b5a2b);
+}
+
+.mem-card:nth-child(3) {
+  animation-delay: 0.3s;
+  background: linear-gradient(135deg, #3d4451, #6b7280);
+}
+
+.mem-card:nth-child(4) {
+  animation-delay: 0.4s;
+  background: linear-gradient(135deg, #8a6920, #c9a84c);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mem-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.mem-card-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mem-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+}
+
+.mem-card .price {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-top: 0.15rem;
+}
+
+.mem-card a.info-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.mem-card a.info-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* MODALS */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: 14px;
+  max-width: 480px;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  animation: popIn 0.25s ease;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.modal h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.modal ul {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.modal .modal-price {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--green-dark);
+}
+
+#modal-np h2    { color: var(--np-color); }
+#modal-bronze h2 { color: var(--bronze-color); }
+#modal-silver h2 { color: var(--silver-color); }
+#modal-gold h2  { color: var(--gold-level-color); }
