@@ -7,20 +7,9 @@ const WEATHER_CITY    = 'Abuja';
 const WEATHER_COUNTRY = 'NG';
 const WEATHER_UNITS   = 'metric';
 
-const WEATHER_ICONS = {
-  '01d': '☀️',  '01n': '🌙',
-  '02d': '⛅',  '02n': '☁️',
-  '03d': '☁️',  '03n': '☁️',
-  '04d': '☁️',  '04n': '☁️',
-  '09d': '🌧️', '09n': '🌧️',
-  '10d': '🌦️', '10n': '🌧️',
-  '11d': '⛈️', '11n': '⛈️',
-  '13d': '❄️',  '13n': '❄️',
-  '50d': '🌫️', '50n': '🌫️',
-};
-
-function getWeatherIcon(code) {
-  return WEATHER_ICONS[code] || '🌡️';
+// All icons come from the OpenWeatherMap API — no emoji, no hardcoding
+function getWeatherIconUrl(iconCode) {
+  return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 }
 
 function capitalizeFirst(str) {
@@ -63,6 +52,7 @@ function extractDailyForecasts(data) {
     if (days.length === 3) break;
   }
 
+  // Fallback: pick first available entry per day if midday slot not found
   if (days.length < 3) {
     const fb = new Set(days.map(d => new Date(d.dt_txt).toDateString()));
     for (const item of data.list) {
@@ -80,80 +70,90 @@ function renderWeather(current, forecasts) {
   const el = document.getElementById('weather-container');
   if (!el) return;
 
-  const icon = getWeatherIcon(current.weather[0].icon);
-  const temp = Math.round(current.main.temp);
-  const desc = capitalizeFirst(current.weather[0].description);
+  const iconCode = current.weather[0].icon;
+  const iconUrl  = getWeatherIconUrl(iconCode);
+  const iconDesc = capitalizeFirst(current.weather[0].description);
+  const temp     = Math.round(current.main.temp);
+  const feelsLike = Math.round(current.main.feels_like);
+  const humidity = current.main.humidity;
+  const windSpeed = Math.round(current.wind.speed);
 
-  const fHTML = forecasts.map(day => `
-    <div class="forecast-day">
-      <div class="forecast-day-name">${getDayName(day.dt_txt)}</div>
-      <div class="forecast-day-icon">${getWeatherIcon(day.weather[0].icon)}</div>
-      <div class="forecast-day-temp">${Math.round(day.main.temp)}&deg;C</div>
-    </div>
-  `).join('');
+  const fHTML = forecasts.map(day => {
+    const fIcon = getWeatherIconUrl(day.weather[0].icon);
+    const fDesc = capitalizeFirst(day.weather[0].description);
+    return `
+      <div class="forecast-day">
+        <div class="forecast-day-name">${getDayName(day.dt_txt)}</div>
+        <img
+          class="forecast-day-icon"
+          src="${fIcon}"
+          alt="${fDesc}"
+          width="50"
+          height="50"
+          loading="lazy">
+        <div class="forecast-day-temp">${Math.round(day.main.temp)}&deg;C</div>
+      </div>
+    `;
+  }).join('');
 
   el.innerHTML = `
-    <p class="weather-location">&#128205; ${WEATHER_CITY}, Nigeria</p>
+    <p class="weather-location">
+      <span aria-hidden="true">&#128205;</span> ${WEATHER_CITY}, Nigeria
+    </p>
     <div class="weather-current">
-      <div class="weather-icon">${icon}</div>
-      <div class="weather-temp">${temp}&deg;C</div>
+      <img
+        class="weather-icon"
+        src="${iconUrl}"
+        alt="${iconDesc}"
+        width="80"
+        height="80"
+        loading="eager">
+      <div class="weather-temp-block">
+        <span class="weather-temp">${temp}&deg;C</span>
+        <span class="weather-desc">${iconDesc}</span>
+      </div>
     </div>
-    <p class="weather-desc">${desc}</p>
+    <ul class="weather-details">
+      <li>Feels like: <strong>${feelsLike}&deg;C</strong></li>
+      <li>Humidity: <strong>${humidity}%</strong></li>
+      <li>Wind: <strong>${windSpeed} m/s</strong></li>
+    </ul>
     <hr class="weather-divider">
     <p class="forecast-title">3-Day Forecast</p>
     <div class="forecast-grid">${fHTML}</div>
   `;
 }
 
-function renderWeatherFallback() {
+function renderWeatherUnavailable() {
   const el = document.getElementById('weather-container');
   if (!el) return;
   el.innerHTML = `
-    <p class="weather-location">&#128205; ${WEATHER_CITY}, Nigeria</p>
-    <div class="weather-current">
-      <div class="weather-icon">&#9728;&#65039;</div>
-      <div class="weather-temp">33&deg;C</div>
-    </div>
-    <p class="weather-desc">Sunny with light breeze</p>
-    <hr class="weather-divider">
-    <p class="forecast-title">3-Day Forecast</p>
-    <div class="forecast-grid">
-      <div class="forecast-day">
-        <div class="forecast-day-name">Fri</div>
-        <div class="forecast-day-icon">&#127780;&#65039;</div>
-        <div class="forecast-day-temp">34&deg;C</div>
-      </div>
-      <div class="forecast-day">
-        <div class="forecast-day-name">Sat</div>
-        <div class="forecast-day-icon">&#127750;&#65039;</div>
-        <div class="forecast-day-temp">29&deg;C</div>
-      </div>
-      <div class="forecast-day">
-        <div class="forecast-day-name">Sun</div>
-        <div class="forecast-day-icon">&#9925;</div>
-        <div class="forecast-day-temp">31&deg;C</div>
-      </div>
-    </div>
-    <p class="weather-api-note">Add your OpenWeatherMap API key in scripts/app.js for live data.</p>
+    <p class="weather-unavailable">
+      Weather data is currently unavailable. Please check back shortly.
+    </p>
   `;
 }
 
 async function loadWeather() {
   const el = document.getElementById('weather-container');
   if (!el) return;
+
   if (!WEATHER_API_KEY || WEATHER_API_KEY === 'YOUR_API_KEY_HERE') {
-    renderWeatherFallback();
+    renderWeatherUnavailable();
     return;
   }
+
   el.innerHTML = '<p class="weather-loading">Loading weather data&hellip;</p>';
+
   try {
     const [current, forecastData] = await Promise.all([
-      fetchCurrentWeather(), fetchForecast()
+      fetchCurrentWeather(),
+      fetchForecast()
     ]);
     renderWeather(current, extractDailyForecasts(forecastData));
   } catch (err) {
     console.error('Weather load failed:', err);
-    renderWeatherFallback();
+    renderWeatherUnavailable();
   }
 }
 
