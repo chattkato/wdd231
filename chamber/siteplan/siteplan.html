@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site plan document for OrbitBase – a Space and Satellite Technology Explorer website. WDD231 Individual Project.">
+  <meta name="author" content="Chatt Kato">
+  <title>OrbitBase – Site Plan | WDD231</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/siteplan.css">
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <span class="eyebrow">WDD231 &middot; Individual Project &middot; Site Plan</span>
+    <h1>Orbit<span>Base</span></h1>
+    <p class="tagline">Space &amp; Satellite Technology Explorer &mdash; Site Plan Document</p>
+  </header>
+
+  <!-- SECTION 01 – SITE NAME -->
+  <section class="section" aria-labelledby="name-heading">
+    <span class="section-label">Section 01</span>
+    <h2 id="name-heading">Site Name</h2>
+    <p class="site-name-display">Orbit<span>Base</span></p>
+    <p>The name <strong>OrbitBase</strong> is formed by combining two defining concepts:
+    <em>orbit</em> — the path a satellite follows around a celestial body — and <em>base</em>,
+    which signals both a base of knowledge and a database of catalog entries. Together they
+    describe a reference hub where visitors can explore, search, and learn about satellites
+    and space missions.</p>
+    <p>The name is short, technically relevant, and easy to remember. It works as a standalone
+    brand without requiring further explanation, and reads well as a domain name.</p>
+    <span class="domain-note">Optional domain: orbitbase.space</span>
+  </section>
+
+  <!-- SECTION 02 – SITE PURPOSE -->
+  <section class="section" aria-labelledby="purpose-heading">
+    <span class="section-label">Section 02</span>
+    <h2 id="purpose-heading">Site Purpose</h2>
+    <p>OrbitBase is a three-page catalog website that allows visitors to browse and explore a
+    curated directory of active and historical satellites and space missions. The site fetches
+    structured mission data from a local JSON file and displays each entry with key details
+    including orbit type, operator, launch date, altitude, mass, and mission purpose.</p>
+    <p>A filterable and searchable catalog page allows users to narrow results by orbit class,
+    mission type, and operational status. A modal dialog provides a full mission profile on
+    demand without leaving the page. A contact and subscription form lets space enthusiasts
+    stay connected with site updates. Local storage is used to remember the visitor's last
+    filter preferences across sessions.</p>
+    <p>The site targets students, hobbyists, satellite industry professionals, and anyone
+    curious about what is currently orbiting Earth and beyond.</p>
+  </section>
+
+  <!-- SECTION 03 – SCENARIOS -->
+  <section class="section" aria-labelledby="scenarios-heading">
+    <span class="section-label">Section 03</span>
+    <h2 id="scenarios-heading">Scenarios</h2>
+    <p>The following questions represent real visitors interacting with OrbitBase. They define
+    the target audience and drive the content, features, and structure of each page.</p>
+    <ul class="scenario-list">
+      <li>I want to know which satellites are currently in low Earth orbit — how many are there
+          and who operates them?</li>
+      <li>I work in the telecom industry and need to quickly identify communication satellites
+          by coverage region and operator.</li>
+      <li>I am a student researching space missions for a class project — where can I find a
+          list of missions with launch dates and purposes?</li>
+      <li>I heard about a new satellite launch recently — can I find it in a catalog and see
+          its orbital altitude and mission data?</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 04 – COLOR SCHEME -->
+  <section class="section" aria-labelledby="color-heading">
+    <span class="section-label">Section 04</span>
+    <h2 id="color-heading">Color Scheme</h2>
+    <p>The palette is drawn from the visual language of deep space: near-black backgrounds
+    evoking the void, electric blue for active interface elements, and violet for secondary
+    highlights referencing the spectral color of nebulae imagery. This document uses these
+    colors exclusively.</p>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#050A18;"></div>
+        <div class="color-info">
+          <strong>Deep Space</strong><code>#050A18</code>
+          <p>Primary page background on all three site pages.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#0D1526;"></div>
+        <div class="color-info">
+          <strong>Surface Navy</strong><code>#0D1526</code>
+          <p>Card backgrounds, nav bar, modal dialogs, sidebar, footer.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#4FC3F7;"></div>
+        <div class="color-info">
+          <strong>Electric Sky</strong><code>#4FC3F7</code>
+          <p>Primary accent: links, CTAs, active nav, badges, stat numbers.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#B388FF;"></div>
+        <div class="color-info">
+          <strong>Nebula Violet</strong><code>#B388FF</code>
+          <p>Secondary accent: type labels, orbit tags, scenario borders.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#E8EDF5;"></div>
+        <div class="color-info">
+          <strong>Starlight</strong><code>#E8EDF5</code>
+          <p>Body text, paragraph content, card descriptions.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#7A90B0;"></div>
+        <div class="color-info">
+          <strong>Dust Haze</strong><code>#7A90B0</code>
+          <p>Muted text: metadata, captions, placeholders, inactive nav.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 05 – TYPOGRAPHY -->
+  <section class="section" aria-labelledby="type-heading">
+    <span class="section-label">Section 05</span>
+    <h2 id="type-heading">Typography</h2>
+    <p>Two typefaces are used throughout the site — one geometric and technical for structure
+    and identity, one neutral and highly legible for content.</p>
+
+    <div class="type-sample">
+      <span class="type-meta">Font 1 — Space Grotesk · Display, Headings, Navigation, Labels</span>
+      <p class="sample-display">OrbitBase</p>
+      <p class="sample-heading">Satellite Catalog Explorer</p>
+      <p class="type-usage-note"><strong style="color:var(--text);">Used for:</strong> Site name,
+      all page headings (h1–h3), navigation links, section eyebrow labels, card titles, filter
+      labels, stat numbers, and button text. Weight 700 for display; 500 for subheadings; 400
+      for nav.</p>
+    </div>
+
+    <div class="type-sample">
+      <span class="type-meta">Font 2 — Inter · Body, Descriptions, Form Labels, Metadata</span>
+      <p class="sample-body">Low Earth Orbit (LEO) satellites orbit at altitudes between 160 km
+      and 2,000 km above Earth's surface. They are widely used for Earth observation, broadband
+      internet constellations, and crewed space stations.</p>
+      <p class="sample-meta-text">Launch Date: March 14, 2022 &nbsp;&middot;&nbsp; Operator: ESA
+      &nbsp;&middot;&nbsp; Orbit: LEO &nbsp;&middot;&nbsp; Altitude: 786 km</p>
+      <p class="type-usage-note"><strong style="color:var(--text);">Used for:</strong> All
+      paragraph text, mission descriptions, form labels and input text, placeholder text, modal
+      body content, footer copy, and metadata strings. Weight 400 standard; 300 for captions.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 06 – PAGE OVERVIEW -->
+  <section class="section" aria-labelledby="pages-heading">
+    <span class="section-label">Section 06</span>
+    <h2 id="pages-heading">Page Overview</h2>
+    <p>The project consists of three primary pages plus a form action page and an attributions page.</p>
+    <table class="pages-table">
+      <thead>
+        <tr>
+          <th scope="col">File</th>
+          <th scope="col">Page Name</th>
+          <th scope="col">Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>index.html</td>
+          <td>Home</td>
+          <td>Hero, animated orbit diagram, stats counter, 6 featured satellite cards, orbit types explainer.</td>
+        </tr>
+        <tr>
+          <td>catalog.html</td>
+          <td>Satellite Catalog</td>
+          <td>All 20 satellites as cards. Filter by orbit, type, status; search; sort by name, date, altitude, or mass. Modal on click.</td>
+        </tr>
+        <tr>
+          <td>contact.html</td>
+          <td>Contact &amp; Subscribe</td>
+          <td>Contact form with validation, area of interest selector, subscribe checkbox. Displays submitted data on the same page.</td>
+        </tr>
+        <tr>
+          <td>attributions.html</td>
+          <td>Attributions</td>
+          <td>Credits for images, data sources, and fonts. Linked from footer. Not counted toward the 3-page requirement.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 07 – WIREFRAMES -->
+  <section class="section" aria-labelledby="wire-heading">
+    <span class="section-label">Section 07</span>
+    <h2 id="wire-heading">Wireframe — Home Page</h2>
+    <p>Wireframe diagrams for the OrbitBase home page in mobile and desktop views.
+    Shaded blocks represent content areas and layout relationships only.</p>
+
+    <div class="wireframe-grid">
+
+      <div class="wireframe-box">
+        <h3>Mobile View (&le; 480px)</h3>
+        <svg class="wf-svg" viewBox="0 0 230 580" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Mobile wireframe for OrbitBase home page">
+          <rect width="230" height="580" fill="#050A18" rx="6"/>
+          <!-- Nav -->
+          <rect x="8" y="8" width="214" height="36" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="16" y="18" width="64" height="14" rx="2" fill="#4FC3F7" opacity="0.55"/>
+          <rect x="192" y="18" width="18" height="2.5" rx="1" fill="#7A90B0"/>
+          <rect x="192" y="24" width="18" height="2.5" rx="1" fill="#7A90B0"/>
+          <rect x="192" y="30" width="18" height="2.5" rx="1" fill="#7A90B0"/>
+          <!-- Hero -->
+          <rect x="8" y="52" width="214" height="148" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <circle cx="115" cy="100" r="36" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.25"/>
+          <circle cx="115" cy="100" r="24" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.35"/>
+          <circle cx="115" cy="100" r="10" fill="#0D1526" stroke="#4FC3F7" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="115" cy="64" r="4" fill="#4FC3F7" opacity="0.8"/>
+          <circle cx="139" cy="124" r="3" fill="#B388FF" opacity="0.7"/>
+          <rect x="24" y="140" width="140" height="14" rx="2" fill="#FFFFFF" opacity="0.2"/>
+          <rect x="24" y="160" width="180" height="7" rx="2" fill="#7A90B0" opacity="0.3"/>
+          <rect x="24" y="171" width="150" height="7" rx="2" fill="#7A90B0" opacity="0.22"/>
+          <rect x="24" y="184" width="80" height="26" rx="4" fill="#4FC3F7" opacity="0.5"/>
+          <rect x="114" y="184" width="80" height="26" rx="4" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.5"/>
+          <text x="40" y="200" font-family="sans-serif" font-size="7.5" fill="#050A18">Explore</text>
+          <text x="126" y="200" font-family="sans-serif" font-size="7.5" fill="#4FC3F7">Updates</text>
+          <!-- Stats -->
+          <rect x="8" y="208" width="214" height="44" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="14" y="216" width="62" height="28" rx="3" fill="#111E36"/>
+          <rect x="84" y="216" width="62" height="28" rx="3" fill="#111E36"/>
+          <rect x="154" y="216" width="62" height="28" rx="3" fill="#111E36"/>
+          <text x="24" y="228" font-family="sans-serif" font-size="8" fill="#4FC3F7">20</text>
+          <text x="16" y="238" font-family="sans-serif" font-size="6" fill="#7A90B0">Satellites</text>
+          <text x="92" y="228" font-family="sans-serif" font-size="8" fill="#B388FF">12</text>
+          <text x="86" y="238" font-family="sans-serif" font-size="6" fill="#7A90B0">Operators</text>
+          <text x="162" y="228" font-family="sans-serif" font-size="8" fill="#4FC3F7">19</text>
+          <text x="156" y="238" font-family="sans-serif" font-size="6" fill="#7A90B0">Active</text>
+          <!-- Cards -->
+          <text x="8" y="270" font-family="sans-serif" font-size="6.5" fill="#4FC3F7" letter-spacing="1.5">FEATURED SATELLITES</text>
+          <rect x="8" y="278" width="214" height="64" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="8" y="278" width="214" height="28" rx="4" fill="#111E36"/>
+          <rect x="14" y="312" width="120" height="8" rx="2" fill="#E8EDF5" opacity="0.25"/>
+          <rect x="14" y="324" width="90" height="6" rx="2" fill="#7A90B0" opacity="0.25"/>
+          <rect x="8" y="350" width="214" height="64" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="8" y="350" width="214" height="28" rx="4" fill="#111E36"/>
+          <rect x="14" y="384" width="120" height="8" rx="2" fill="#E8EDF5" opacity="0.25"/>
+          <rect x="14" y="396" width="90" height="6" rx="2" fill="#7A90B0" opacity="0.25"/>
+          <rect x="8" y="422" width="214" height="64" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="8" y="422" width="214" height="28" rx="4" fill="#111E36"/>
+          <rect x="14" y="456" width="120" height="8" rx="2" fill="#E8EDF5" opacity="0.25"/>
+          <rect x="14" y="468" width="90" height="6" rx="2" fill="#7A90B0" opacity="0.25"/>
+          <!-- CTA -->
+          <rect x="65" y="494" width="100" height="22" rx="4" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.5"/>
+          <text x="74" y="508" font-family="sans-serif" font-size="7" fill="#4FC3F7">View Full Catalog →</text>
+          <!-- Footer -->
+          <rect x="8" y="524" width="214" height="46" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="16" y="534" width="80" height="5" rx="2" fill="#7A90B0" opacity="0.3"/>
+          <rect x="16" y="543" width="110" height="4" rx="2" fill="#7A90B0" opacity="0.2"/>
+        </svg>
+      </div>
+
+      <div class="wireframe-box">
+        <h3>Desktop / Tablet View (&ge; 768px)</h3>
+        <svg class="wf-svg" viewBox="0 0 420 580" xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Desktop wireframe for OrbitBase home page">
+          <rect width="420" height="580" fill="#050A18" rx="6"/>
+          <!-- Nav -->
+          <rect x="8" y="8" width="404" height="34" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="16" y="16" width="72" height="16" rx="2" fill="#4FC3F7" opacity="0.55"/>
+          <text x="230" y="28" font-family="sans-serif" font-size="7.5" fill="#7A90B0">Home</text>
+          <text x="270" y="28" font-family="sans-serif" font-size="7.5" fill="#7A90B0">Catalog</text>
+          <text x="316" y="28" font-family="sans-serif" font-size="7.5" fill="#7A90B0">Contact</text>
+          <rect x="360" y="16" width="44" height="18" rx="3" fill="#4FC3F7" opacity="0.35"/>
+          <text x="365" y="27" font-family="sans-serif" font-size="7" fill="#050A18">Get Updates</text>
+          <!-- Hero 2-col -->
+          <rect x="8" y="50" width="404" height="140" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="20" y="66" width="180" height="18" rx="2" fill="#FFFFFF" opacity="0.2"/>
+          <rect x="20" y="90" width="190" height="7" rx="2" fill="#7A90B0" opacity="0.3"/>
+          <rect x="20" y="101" width="170" height="7" rx="2" fill="#7A90B0" opacity="0.22"/>
+          <rect x="20" y="130" width="82" height="24" rx="4" fill="#4FC3F7" opacity="0.5"/>
+          <rect x="112" y="130" width="82" height="24" rx="4" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.5"/>
+          <text x="34" y="145" font-family="sans-serif" font-size="8" fill="#050A18">Explore Catalog</text>
+          <text x="122" y="145" font-family="sans-serif" font-size="8" fill="#4FC3F7">Get Updates</text>
+          <rect x="230" y="58" width="174" height="124" rx="4" fill="#111E36"/>
+          <circle cx="317" cy="120" r="48" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.2"/>
+          <circle cx="317" cy="120" r="34" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.3"/>
+          <circle cx="317" cy="120" r="18" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.4"/>
+          <circle cx="317" cy="120" r="7" fill="#0D1526" stroke="#4FC3F7" stroke-width="1.5" opacity="0.7"/>
+          <circle cx="317" cy="72" r="4.5" fill="#4FC3F7" opacity="0.9"/>
+          <circle cx="283" cy="154" r="3.5" fill="#B388FF" opacity="0.8"/>
+          <!-- Stats -->
+          <rect x="8" y="198" width="404" height="44" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="16" y="206" width="120" height="28" rx="3" fill="#111E36"/>
+          <rect x="152" y="206" width="120" height="28" rx="3" fill="#111E36"/>
+          <rect x="288" y="206" width="120" height="28" rx="3" fill="#111E36"/>
+          <text x="46" y="218" font-family="sans-serif" font-size="9" fill="#4FC3F7">20</text>
+          <text x="22" y="228" font-family="sans-serif" font-size="6.5" fill="#7A90B0">Satellites in Catalog</text>
+          <text x="182" y="218" font-family="sans-serif" font-size="9" fill="#B388FF">12</text>
+          <text x="158" y="228" font-family="sans-serif" font-size="6.5" fill="#7A90B0">Unique Operators</text>
+          <text x="318" y="218" font-family="sans-serif" font-size="9" fill="#4FC3F7">19</text>
+          <text x="294" y="228" font-family="sans-serif" font-size="6.5" fill="#7A90B0">Currently Active</text>
+          <!-- Card grid 3x2 -->
+          <text x="8" y="264" font-family="sans-serif" font-size="6.5" fill="#4FC3F7" letter-spacing="1.5">FEATURED SATELLITES</text>
+          <rect x="8"   y="288" width="124" height="84" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="8"   y="288" width="124" height="38" rx="4" fill="#111E36"/>
+          <rect x="14"  y="332" width="90"  height="7"  rx="2" fill="#E8EDF5" opacity="0.22"/>
+          <rect x="148" y="288" width="124" height="84" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="148" y="288" width="124" height="38" rx="4" fill="#111E36"/>
+          <rect x="154" y="332" width="90"  height="7"  rx="2" fill="#E8EDF5" opacity="0.22"/>
+          <rect x="288" y="288" width="124" height="84" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="288" y="288" width="124" height="38" rx="4" fill="#111E36"/>
+          <rect x="294" y="332" width="90"  height="7"  rx="2" fill="#E8EDF5" opacity="0.22"/>
+          <rect x="8"   y="380" width="124" height="84" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="8"   y="380" width="124" height="38" rx="4" fill="#111E36"/>
+          <rect x="148" y="380" width="124" height="84" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="148" y="380" width="124" height="38" rx="4" fill="#111E36"/>
+          <rect x="288" y="380" width="124" height="84" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="288" y="380" width="124" height="38" rx="4" fill="#111E36"/>
+          <!-- CTA -->
+          <rect x="152" y="472" width="116" height="22" rx="4" fill="none" stroke="#4FC3F7" stroke-width="1" opacity="0.5"/>
+          <text x="161" y="486" font-family="sans-serif" font-size="7.5" fill="#4FC3F7">View Full Catalog →</text>
+          <!-- Orbit cards row -->
+          <rect x="8"   y="502" width="92"  height="50" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="108" y="502" width="92"  height="50" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="208" y="502" width="92"  height="50" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="308" y="502" width="104" height="50" rx="4" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <!-- Footer -->
+          <rect x="8" y="560" width="404" height="14" rx="3" fill="#0D1526" stroke="#1C2E50" stroke-width="1"/>
+          <rect x="16" y="565" width="90" height="4" rx="2" fill="#7A90B0" opacity="0.25"/>
+          <rect x="210" y="565" width="70" height="4" rx="2" fill="#7A90B0" opacity="0.2"/>
+          <rect x="330" y="565" width="74" height="4" rx="2" fill="#7A90B0" opacity="0.18"/>
+        </svg>
+      </div>
+
+    </div>
+
+    <p class="wireframe-note"><strong>Layout notes:</strong> Mobile stacks all content vertically
+    with a hamburger navigation menu. Desktop uses a two-column hero (text left, orbit diagram
+    right), three-column stats strip, CSS Grid card section (3 columns), and four-column orbit
+    types row. Both views share the same dark background and footer structure.</p>
+  </section>
+
+  <footer>
+    <p>OrbitBase &mdash; WDD231 Individual Project Site Plan &nbsp;&middot;&nbsp; &copy; 2026 Chatt Kato</p>
+  </footer>
+
+</div>
+</body>
+</html>
