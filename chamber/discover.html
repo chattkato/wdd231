@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover Abuja — explore the landmarks, culture, and attractions of Nigeria's Federal Capital Territory.">
+  <meta name="author" content="Chatt Kato">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Discover Abuja — FCT Attractions and Landmarks">
+  <meta property="og:description" content="Explore the best of Abuja, Nigeria's Federal Capital Territory — landmarks, culture, nature, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chattkato.github.io/wdd231/chamber/discover.html">
+  <meta property="og:image" content="https://chattkato.github.io/wdd231/chamber/images/og-image.jpg">
+
+  <title>Discover Abuja | Abuja Chamber of Commerce and Industry</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/discover.css">
+
+  <!-- JavaScript module -->
+  <script type="module" src="scripts/discover.mjs" defer></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <div class="brand">
+      <div class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="20" stroke="#c8a84b" stroke-width="2.5"/>
+          <path d="M14 30 L24 14 L34 30 Z" fill="#c8a84b" opacity="0.85"/>
+          <rect x="20" y="26" width="8" height="8" rx="1" fill="#c8a84b" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Abuja Chamber</span>
+        <span class="brand-sub">of Commerce &amp; Industry</span>
+      </div>
+    </div>
+
+    <button
+      class="nav-toggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="discover.html" aria-current="page">Discover Abuja</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- Page hero -->
+  <section class="discover-hero" aria-label="Discover Abuja introduction">
+    <div class="container">
+      <h1>Discover Abuja</h1>
+      <p class="discover-intro">
+        Nigeria's Federal Capital Territory is a city of bold architecture, natural beauty,
+        and vibrant culture. Explore eight of the most compelling places and experiences
+        the city has to offer.
+      </p>
+    </div>
+  </section>
+
+  <!-- Visitor message (localStorage) -->
+  <div class="container">
+    <div id="visitor-message" class="visitor-message" aria-live="polite"></div>
+  </div>
+
+  <!-- Demographics strip -->
+  <section class="demographics-strip" aria-label="Abuja at a glance">
+    <div class="container">
+      <h2 class="section-title">Abuja at a Glance</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <span class="demo-value">3.6M+</span>
+          <span class="demo-label">Population (FCT)</span>
+        </div>
+        <div class="demo-item">
+          <span class="demo-value">7,315 km²</span>
+          <span class="demo-label">Total Area</span>
+        </div>
+        <div class="demo-item">
+          <span class="demo-value">1991</span>
+          <span class="demo-label">Year of Establishment</span>
+        </div>
+        <div class="demo-item">
+          <span class="demo-value">&#8358;12T+</span>
+          <span class="demo-label">Annual GDP Contribution</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attraction cards — built by JS -->
+  <section class="attractions-section" aria-labelledby="attractions-heading">
+    <div class="container">
+      <h2 class="section-title" id="attractions-heading">Places of Interest</h2>
+      <div class="attractions-grid" id="attractions-grid" aria-live="polite">
+        <p class="loading-msg">Loading attractions&hellip;</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <p class="footer-brand-name">Abuja Chamber of Commerce</p>
+        <p>Serving the business community of Nigeria's Federal Capital Territory since 1991.</p>
+      </div>
+
+      <div class="footer-col">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="directory.html">Member Directory</a></li>
+          <li><a href="join.html">Join the Chamber</a></li>
+          <li><a href="discover.html">Discover Abuja</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:info@abujachamber.ng">info@abujachamber.ng</a></li>
+          <li><a href="tel:+2349012345678">+234 901 234 5678</a></li>
+          <li>Plot 88, Central Business District, Abuja, FCT</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year"></span> Abuja Chamber of Commerce &amp; Industry. All rights reserved.</p>
+      <p>WDD231 Course Project</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

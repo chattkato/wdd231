@@ -1,0 +1,307 @@
+/* ============================================================
+   discover.css — Discover page styles
+   Abuja Chamber of Commerce and Industry
+   ============================================================ */
+
+/* ─── HERO ─── */
+.discover-hero {
+  background: linear-gradient(135deg, #0d3b2e 0%, #165a40 60%, #1e7a55 100%);
+  color: #ffffff;
+  padding: 3rem 0 2.5rem;
+  text-align: center;
+}
+
+.discover-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.discover-intro {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ─── VISITOR MESSAGE ─── */
+.visitor-message {
+  display: none;
+  background: #e8f4ee;
+  border-left: 4px solid #1e7a55;
+  color: #0d3b2e;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0;
+}
+
+.visitor-message.visible {
+  display: block;
+}
+
+/* ─── DEMOGRAPHICS STRIP ─── */
+.demographics-strip {
+  background: #f5f0e8;
+  padding: 2.5rem 0;
+  margin-top: 2rem;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.demo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.demo-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0d3b2e;
+  line-height: 1.1;
+}
+
+.demo-label {
+  font-size: 0.8rem;
+  color: #555555;
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 640px) {
+  .demo-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ─── ATTRACTIONS SECTION ─── */
+.attractions-section {
+  padding: 2.5rem 0 3.5rem;
+}
+
+.loading-msg {
+  color: #555555;
+  font-size: 0.95rem;
+  padding: 1rem 0;
+}
+
+/* ─── CARD BASE STYLES ─── */
+.attraction-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease;
+}
+
+.attraction-card:hover {
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.14);
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #0d3b2e;
+  padding: 1rem 1rem 0.5rem;
+  margin: 0;
+}
+
+.card-figure {
+  margin: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.card-figure img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: none;
+}
+
+.card-address {
+  font-style: normal;
+  font-size: 0.78rem;
+  color: #777777;
+  padding: 0.6rem 1rem 0;
+  line-height: 1.4;
+}
+
+.card-address::before {
+  content: '\1F4CD\00A0';
+}
+
+.card-description {
+  font-size: 0.88rem;
+  color: #333333;
+  padding: 0.6rem 1rem 0;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card-btn {
+  display: block;
+  margin: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: #0d3b2e;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease;
+  align-self: flex-start;
+}
+
+.card-btn:hover {
+  background: #1e7a55;
+}
+
+/* ============================================================
+   GRID LAYOUTS — Named Grid Areas
+
+   Small:  320px–640px   → single column, stacked
+   Medium: 641px–1024px  → asymmetric 2-col with wide features
+   Large:  1025px+       → magazine 3-col with spanning cards
+   ============================================================ */
+
+/* ─── SMALL (default, mobile-first) ─── */
+.attractions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "card1"
+    "card2"
+    "card3"
+    "card4"
+    "card5"
+    "card6"
+    "card7"
+    "card8";
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* ─── MEDIUM: 641px–1024px ─── */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .attractions-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "card1 card1"
+      "card2 card3"
+      "card4 card5"
+      "card6 card6"
+      "card7 card8";
+    gap: 1.5rem;
+  }
+
+  /* Wide feature cards get horizontal layout */
+  .attractions-grid [style*="grid-area: card1"],
+  .attractions-grid [style*="grid-area: card6"] {
+    flex-direction: row;
+  }
+
+  .attractions-grid [style*="grid-area: card1"] .card-figure,
+  .attractions-grid [style*="grid-area: card6"] .card-figure {
+    flex: 0 0 45%;
+  }
+
+  .attractions-grid [style*="grid-area: card1"] .card-figure img,
+  .attractions-grid [style*="grid-area: card6"] .card-figure img {
+    height: 100%;
+    min-height: 220px;
+  }
+
+  /* Image hover effect — medium and up only */
+  .card-figure img {
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .attraction-card:hover .card-figure img {
+    transform: scale(1.06);
+    filter: brightness(1.08) saturate(1.15);
+  }
+}
+
+/* ─── LARGE: 1025px+ ─── */
+@media (min-width: 1025px) {
+  .attractions-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "card1 card1 card2"
+      "card3 card4 card2"
+      "card5 card6 card7"
+      "card8 card8 card7";
+    gap: 1.75rem;
+  }
+
+  /* card1: horizontal feature spanning 2 cols */
+  .attractions-grid [style*="grid-area: card1"] {
+    flex-direction: row;
+  }
+
+  .attractions-grid [style*="grid-area: card1"] .card-figure {
+    flex: 0 0 50%;
+  }
+
+  .attractions-grid [style*="grid-area: card1"] .card-figure img {
+    height: 100%;
+    min-height: 240px;
+  }
+
+  /* card2: tall card spanning 2 rows */
+  .attractions-grid [style*="grid-area: card2"] .card-figure img {
+    height: 280px;
+  }
+
+  /* card7: tall card spanning 2 rows */
+  .attractions-grid [style*="grid-area: card7"] .card-figure img {
+    height: 280px;
+  }
+
+  /* card8: horizontal feature spanning 2 cols */
+  .attractions-grid [style*="grid-area: card8"] {
+    flex-direction: row;
+  }
+
+  .attractions-grid [style*="grid-area: card8"] .card-figure {
+    flex: 0 0 50%;
+  }
+
+  .attractions-grid [style*="grid-area: card8"] .card-figure img {
+    height: 100%;
+    min-height: 220px;
+  }
+
+  /* Image hover effect — large screens only */
+  .card-figure img {
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .attraction-card:hover .card-figure img {
+    transform: scale(1.07);
+    filter: brightness(1.1) saturate(1.2);
+  }
+}
