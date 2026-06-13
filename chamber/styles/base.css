@@ -3,20 +3,43 @@
    ============================================================ */
 
 :root {
+  /* Brand greens */
   --green-dark: #0d3b2e;
   --green-mid: #165a40;
   --green-light: #1e7a55;
+
+  /* Brand golds */
   --gold: #c9a84c;
   --gold-light: #e8c97a;
+
+  /* Neutrals */
   --cream: #faf6ef;
+  --cream-alt: #f5f0e8;
   --white: #ffffff;
+  --off-white: #fafafa;
   --text: #1a1a1a;
+  --text-mid: #333333;
   --text-muted: #555555;
+  --text-light: #777777;
   --border: #dddddd;
+  --border-light: #cccccc;
+
+  /* Membership tier colors */
   --np-color: #4a7c6b;
   --bronze-color: #8b5a2b;
   --silver-color: #6b7280;
   --gold-level-color: #c9a84c;
+
+  /* Feedback / UI */
+  --error-color: #c0392b;
+  --success-bg: #e8f4ee;
+
+  /* Shadows — replaces all rgba(0,0,0,x) literals */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 3px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6px 28px rgba(0, 0, 0, 0.14);
+  --shadow-header: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-form: 0 4px 24px rgba(0, 0, 0, 0.07);
 }
 
 *, *::before, *::after {
