@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OrbitBase – Explore satellites, space missions, and orbital technology. Browse a curated catalog of active and historic spacecraft.">
+  <meta name="author" content="Chatt Kato">
+  <meta property="og:title" content="OrbitBase – Space & Satellite Technology Explorer">
+  <meta property="og:description" content="Browse a curated catalog of satellites and space missions with orbital data, operators, and mission details.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://username.github.io/wdd231/final/">
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/International_Space_Station_after_undocking_of_STS-132.jpg/600px-International_Space_Station_after_undocking_of_STS-132.jpg">
+  <title>OrbitBase – Space & Satellite Technology Explorer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23050A18'/><circle cx='16' cy='16' r='5' fill='none' stroke='%234FC3F7' stroke-width='2'/><ellipse cx='16' cy='16' rx='14' ry='5' fill='none' stroke='%234FC3F7' stroke-width='1.5' transform='rotate(30 16 16)'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Orbit<span>Base</span></a>
+    <nav aria-label="Main navigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="section-eyebrow">Space &amp; Satellite Technology</span>
+        <h1 id="hero-heading">Track Every<br><span class="hero-accent">Object in Orbit</span></h1>
+        <p class="hero-sub">OrbitBase is a catalog of active and historic satellites and space missions — searchable by orbit, operator, type, and launch year.</p>
+        <div class="hero-cta">
+          <a href="catalog.html" class="btn btn-primary">Explore Catalog</a>
+          <a href="contact.html" class="btn btn-outline">Get Updates</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit-diagram">
+          <div class="orbit-ring ring-1"></div>
+          <div class="orbit-ring ring-2"></div>
+          <div class="orbit-ring ring-3"></div>
+          <div class="orbit-planet"></div>
+          <div class="orbit-dot dot-1"></div>
+          <div class="orbit-dot dot-2"></div>
+          <div class="orbit-dot dot-3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stats-section" class="stats-strip" aria-label="Key statistics">
+    <div class="container stats-inner">
+      <div class="stat-item">
+        <span id="stat-total" class="stat-num" data-suffix="">0</span>
+        <span class="stat-label">Satellites in Catalog</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item">
+        <span id="stat-operators" class="stat-num" data-suffix="">0</span>
+        <span class="stat-label">Unique Operators</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item">
+        <span id="stat-active" class="stat-num" data-suffix="">0</span>
+        <span class="stat-label">Currently Active</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-section" aria-labelledby="featured-heading">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Featured Missions</span>
+        <h2 id="featured-heading">Notable Satellites &amp; Spacecraft</h2>
+        <p class="section-sub">A selection of landmark missions across different orbit classes and operators. Click any card to explore the full mission profile.</p>
+      </header>
+      <div id="featured-loader" class="loader">
+        <div class="spinner"></div>
+        Loading satellite data…
+      </div>
+      <div id="featured-grid" class="sat-grid" aria-live="polite" aria-label="Featured satellites"></div>
+      <div class="section-cta">
+        <a href="catalog.html" class="btn btn-outline">View All 20 Satellites →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="orbits-section" aria-labelledby="orbits-heading">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Orbital Classes</span>
+        <h2 id="orbits-heading">How Satellites Are Organised by Altitude</h2>
+      </header>
+      <div class="orbits-grid">
+        <div class="orbit-card">
+          <span class="orbit-label">LEO</span>
+          <h3>Low Earth Orbit</h3>
+          <p>160 – 2,000 km altitude. Used for Earth observation, communications constellations, and crewed stations. Short orbital periods of 90–120 minutes.</p>
+        </div>
+        <div class="orbit-card">
+          <span class="orbit-label">MEO</span>
+          <h3>Medium Earth Orbit</h3>
+          <p>2,000 – 35,786 km altitude. The domain of navigation satellites like GPS and Galileo. Orbital periods range from 2 to 24 hours.</p>
+        </div>
+        <div class="orbit-card">
+          <span class="orbit-label">GEO</span>
+          <h3>Geostationary Orbit</h3>
+          <p>35,786 km altitude. Satellites appear stationary over a fixed point on Earth — ideal for weather monitoring and broadcasting.</p>
+        </div>
+        <div class="orbit-card">
+          <span class="orbit-label">SSO</span>
+          <h3>Sun-Synchronous Orbit</h3>
+          <p>Polar orbit designed so the satellite always passes over the same area at the same local solar time — essential for Earth observation consistency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="modal-overlay" role="dialog" aria-modal="true" aria-label="Satellite details">
+  <div class="modal"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      OrbitBase
+      <small>&copy; 2025 Chatt Kato · WDD231 Final Project</small>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="contact.html">Contact</a>
+      <a href="attributions.html">Attributions</a>
+    </nav>
+    <p class="footer-copy">
+      Data sourced from public satellite registries and space agency publications.
+      <a href="#" target="_blank" rel="noopener">Watch Demo Video ↗</a>
+    </p>
+  </div>
+</footer>
+
+<script type="module" src="js/home.js"></script>
+</body>
+</html>

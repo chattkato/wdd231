@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact OrbitBase or subscribe for space and satellite technology updates. Share your area of interest and we will keep you informed.">
+  <meta name="author" content="Chatt Kato">
+  <meta property="og:title" content="Contact – OrbitBase">
+  <meta property="og:description" content="Get in touch with OrbitBase or subscribe for the latest satellite and space mission updates.">
+  <meta property="og:type" content="website">
+  <title>Contact – OrbitBase</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23050A18'/><circle cx='16' cy='16' r='5' fill='none' stroke='%234FC3F7' stroke-width='2'/><ellipse cx='16' cy='16' rx='14' ry='5' fill='none' stroke='%234FC3F7' stroke-width='1.5' transform='rotate(30 16 16)'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Orbit<span>Base</span></a>
+    <nav aria-label="Main navigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="contact-hero page-hero" aria-labelledby="contact-heading">
+    <div class="container">
+      <span class="section-eyebrow">Get in Touch</span>
+      <h1 id="contact-heading">Contact &amp; Subscribe</h1>
+      <p class="page-hero-sub">Have a question about a satellite or mission? Want updates when new entries are added? Fill in the form below.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container contact-layout">
+
+      <div class="form-wrap">
+        <h2 class="form-heading">Send a Message</h2>
+        <form id="contact-form" novalidate aria-label="Contact form">
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name" class="form-label">Full Name <span aria-hidden="true" class="required">*</span></label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" autocomplete="name" required aria-required="true" aria-describedby="name-error">
+              <span id="name-error" class="form-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-field">
+              <label for="email" class="form-label">Email Address <span aria-hidden="true" class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" autocomplete="email" required aria-required="true" aria-describedby="email-error">
+              <span id="email-error" class="form-error" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="interest" class="form-label">Area of Interest <span aria-hidden="true" class="required">*</span></label>
+            <select id="interest" name="interest" class="form-select" required aria-required="true" aria-describedby="interest-error">
+              <option value="">Select your interest…</option>
+              <option value="Earth Observation">Earth Observation</option>
+              <option value="Communication Satellites">Communication Satellites</option>
+              <option value="Navigation Systems">Navigation Systems</option>
+              <option value="Space Exploration">Space Exploration</option>
+              <option value="Weather Satellites">Weather Satellites</option>
+              <option value="CubeSats & Small Satellites">CubeSats &amp; Small Satellites</option>
+              <option value="General Space Technology">General Space Technology</option>
+            </select>
+            <span id="interest-error" class="form-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="message" class="form-label">Message <span aria-hidden="true" class="required">*</span></label>
+            <textarea id="message" name="message" class="form-input form-textarea" placeholder="Your question, comment, or request…" rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
+            <span id="message-error" class="form-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="updates" name="updates" class="check-input">
+            <label for="updates" class="check-label">Send me updates when new satellites are added to OrbitBase</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+        </form>
+      </div>
+
+      <aside class="contact-sidebar" aria-label="Additional information">
+        <div class="sidebar-card">
+          <h3>About OrbitBase</h3>
+          <p>OrbitBase is a student web development project for BYU-Pathway WDD231, built to explore space and satellite technology through interactive design.</p>
+        </div>
+        <div class="sidebar-card">
+          <h3>Data Sources</h3>
+          <ul class="source-list">
+            <li>NASA Satellite Catalog</li>
+            <li>ESA Earth Observation</li>
+            <li>UCS Satellite Database</li>
+            <li>SpaceX Mission Archive</li>
+            <li>JAXA Mission Data</li>
+          </ul>
+        </div>
+        <div class="sidebar-card">
+          <h3>Orbit Types</h3>
+          <div class="orbit-tags">
+            <span class="orbit-tag">LEO</span>
+            <span class="orbit-tag">MEO</span>
+            <span class="orbit-tag">GEO</span>
+            <span class="orbit-tag">SSO</span>
+            <span class="orbit-tag">L2</span>
+            <span class="orbit-tag">Lunar</span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <section id="form-result" class="form-result-section" hidden aria-label="Form submission confirmation" aria-live="polite">
+    <div class="container">
+      <div class="form-result-wrap">
+        <div class="result-icon" aria-hidden="true">✓</div>
+        <h2>Message Received</h2>
+        <p class="result-intro">Here is a summary of what you submitted:</p>
+        <div id="result-content" class="result-table"></div>
+        <a href="catalog.html" class="btn btn-primary" style="margin-top:1.5rem;">Explore the Catalog →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      OrbitBase
+      <small>&copy; 2025 Chatt Kato · WDD231 Final Project</small>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="contact.html">Contact</a>
+      <a href="attributions.html">Attributions</a>
+    </nav>
+    <p class="footer-copy">
+      Data sourced from public satellite registries and space agency publications.
+      <a href="#" target="_blank" rel="noopener">Watch Demo Video ↗</a>
+    </p>
+  </div>
+</footer>
+
+<script type="module" src="js/contact.js"></script>
+</body>
+</html>

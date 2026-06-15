@@ -1,0 +1,66 @@
+/* OrbitBase – Home Page Styles */
+
+.hero { padding: 5rem 0 4rem; border-bottom: 1px solid var(--border); overflow: hidden; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+@media (max-width: 760px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-cta { justify-content: center; }
+  .hero-visual { order: -1; }
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.1rem; }
+.hero-accent { color: var(--accent); }
+.hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 420px; margin-bottom: 2rem; line-height: 1.7; }
+@media (max-width: 760px) { .hero-sub { max-width: 100%; } }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Orbit diagram */
+.hero-visual { display: flex; align-items: center; justify-content: center; }
+.orbit-diagram { position: relative; width: 280px; height: 280px; }
+@media (max-width: 760px) { .orbit-diagram { width: 200px; height: 200px; } }
+.orbit-planet { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 48px; height: 48px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #4FC3F7, #0D1526); box-shadow: 0 0 30px rgba(79,195,247,0.4); }
+.orbit-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1px solid rgba(79,195,247,0.2); transform: translate(-50%,-50%); }
+.ring-1 { width: 110px; height: 110px; }
+.ring-2 { width: 190px; height: 190px; border-color: rgba(179,136,255,0.15); }
+.ring-3 { width: 270px; height: 270px; border-color: rgba(79,195,247,0.1); }
+@media (max-width: 760px) {
+  .ring-1 { width: 80px; height: 80px; }
+  .ring-2 { width: 136px; height: 136px; }
+  .ring-3 { width: 192px; height: 192px; }
+}
+.orbit-dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); top: 50%; left: 50%; transform-origin: 0 0; }
+.dot-1 { background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: orbit1 6s linear infinite; }
+.dot-2 { background: var(--accent2); box-shadow: 0 0 8px var(--accent2); width: 6px; height: 6px; animation: orbit2 10s linear infinite; }
+.dot-3 { background: var(--accent); width: 5px; height: 5px; opacity: 0.6; animation: orbit3 16s linear infinite; }
+@keyframes orbit1 { from { transform: rotate(0deg) translateX(51px) rotate(0deg); } to { transform: rotate(360deg) translateX(51px) rotate(-360deg); } }
+@keyframes orbit2 { from { transform: rotate(120deg) translateX(91px) rotate(-120deg); } to { transform: rotate(480deg) translateX(91px) rotate(-480deg); } }
+@keyframes orbit3 { from { transform: rotate(240deg) translateX(131px) rotate(-240deg); } to { transform: rotate(600deg) translateX(131px) rotate(-600deg); } }
+@media (max-width: 760px) {
+  @keyframes orbit1 { from { transform: rotate(0deg) translateX(36px) rotate(0deg); } to { transform: rotate(360deg) translateX(36px) rotate(-360deg); } }
+  @keyframes orbit2 { from { transform: rotate(120deg) translateX(64px) rotate(-120deg); } to { transform: rotate(480deg) translateX(64px) rotate(-480deg); } }
+  @keyframes orbit3 { from { transform: rotate(240deg) translateX(92px) rotate(-240deg); } to { transform: rotate(600deg) translateX(92px) rotate(-600deg); } }
+}
+
+/* Stats */
+.stats-strip { padding: 2.5rem 0; background: var(--surface); border-bottom: 1px solid var(--border); }
+.stats-inner { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+.stat-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; padding: 0.5rem 3rem; }
+.stat-num { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--accent); line-height: 1; }
+.stat-label { font-size: 0.8rem; color: var(--muted); text-align: center; }
+.stat-divider { width: 1px; height: 50px; background: var(--border); }
+@media (max-width: 600px) { .stat-divider { display: none; } .stat-item { padding: 1rem 2rem; } }
+
+/* Featured */
+.featured-section { padding: 5rem 0; }
+.section-header { margin-bottom: 2.5rem; }
+.section-header h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 0.6rem; }
+.section-sub { color: var(--muted); max-width: 560px; font-size: 0.95rem; }
+.section-cta { margin-top: 2.5rem; text-align: center; }
+
+/* Orbit types */
+.orbits-section { padding: 5rem 0; background: var(--surface); border-top: 1px solid var(--border); }
+.orbits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.25rem; }
+.orbit-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; transition: border-color var(--transition); }
+.orbit-card:hover { border-color: var(--accent); }
+.orbit-label { display: inline-block; font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent2); background: rgba(179,136,255,0.1); border: 1px solid rgba(179,136,255,0.25); border-radius: var(--radius-sm); padding: 2px 8px; margin-bottom: 0.6rem; }
+.orbit-card h3 { font-size: 1rem; margin-bottom: 0.5rem; font-family: var(--font-display); }
+.orbit-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
