@@ -1,162 +1,119 @@
-// js/home.js - Home page functionality
+// home.js – Home page JavaScript
+// ES Module
 
-import { fetchSatellites, getSatelliteStats } from './data.js';
-import { showModal } from './modal.js';
+import { initNav } from './nav.js';
+import { initModal, openModal } from './modal.js';
+import { getPrefs, setPrefs } from './storage.js';
 
-// DOM Elements
-const featuredGrid = document.getElementById('featured-grid');
-const featuredLoader = document.getElementById('featured-loader');
-const statTotal = document.getElementById('stat-total');
-const statOperators = document.getElementById('stat-operators');
-const statActive = document.getElementById('stat-active');
-const modalContainer = document.querySelector('.modal-overlay');
+const FEATURED_COUNT = 6;
 
-// Featured satellite IDs
-const FEATURED_IDS = [1, 2, 6, 7, 3, 5];
-
-/**
- * Create a satellite card HTML string
- * @param {Object} sat - Satellite object
- * @returns {string} HTML string
- */
-function createSatelliteCard(sat) {
-  const statusClass = sat.status === 'Active' ? '' : 'retired';
-  
-  return `
-    <article class="sat-card" data-id="${sat.id}" role="button" tabindex="0">
-      <div class="card-img-wrap">
-        <img 
-          src="${sat.image || 'https://placehold.co/600x400/0D1526/4FC3F7?text=No+Image'}" 
-          alt="${sat.image_alt || sat.name}"
-          loading="lazy"
-          onerror="this.src='https://placehold.co/600x400/0D1526/4FC3F7?text=No+Image'"
-        >
-        <span class="card-orbit-badge">${sat.orbit || 'N/A'}</span>
-        <span class="card-status-dot ${statusClass}" title="${sat.status || 'Unknown'}"></span>
-      </div>
-      <div class="card-body">
-        <div class="card-type">${sat.type || 'Unknown'}</div>
-        <h3 class="card-name">${sat.name}</h3>
-        <div class="card-operator">${sat.operator || 'Unknown Operator'}</div>
-        <div class="card-meta">
-          <span>${sat.country || 'N/A'}</span>
-          <span>${sat.altitude || 'N/A'}</span>
-          <span>${sat.status || 'Unknown'}</span>
-        </div>
-      </div>
-    </article>
-  `;
+async function fetchSatellites() {
+  try {
+    const res = await fetch('./data/satellites.json');
+    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error('OrbitBase: Failed to fetch satellite data', err);
+    return null;
+  }
 }
 
-/**
- * Render featured satellites
- * @param {Array} items - Array of featured satellite objects
- */
-function renderFeatured(items) {
-  if (!featuredGrid) return;
-  
-  if (items.length === 0) {
-    featuredGrid.innerHTML = `
-      <div class="error-msg" style="grid-column: 1/-1;">
-        No featured satellites available.
+function buildCard(sat) {
+  const isRetired = sat.status !== 'Active';
+  const card = document.createElement('article');
+  card.className = 'sat-card';
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('role', 'button');
+  card.setAttribute('aria-label', `View details for ${sat.name}`);
+
+  card.innerHTML = `
+    <div class="card-img-wrap">
+      <img
+        src="${sat.image}"
+        alt="${sat.name}"
+        loading="lazy"
+        onerror="this.src='https://placehold.co/400x160/0D1526/4FC3F7?text=OrbitBase'"
+      >
+      <span class="card-orbit-badge">${sat.orbit}</span>
+      <span class="card-status-dot ${isRetired ? 'retired' : ''}" title="${sat.status}"></span>
+    </div>
+    <div class="card-body">
+      <p class="card-type">${sat.type}</p>
+      <h3 class="card-name">${sat.name}</h3>
+      <p class="card-operator">${sat.operator}</p>
+      <div class="card-meta">
+        <span>${sat.country}</span>
+        <span>${new Date(sat.launch_date).getFullYear()}</span>
+        <span>${sat.status}</span>
       </div>
-    `;
+    </div>
+  `;
+
+  card.addEventListener('click', () => openModal(sat));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') openModal(sat);
+  });
+
+  return card;
+}
+
+function renderFeatured(satellites) {
+  const grid = document.getElementById('featured-grid');
+  if (!grid) return;
+  const featured = satellites.slice(0, FEATURED_COUNT);
+  grid.innerHTML = '';
+  featured.forEach(sat => grid.appendChild(buildCard(sat)));
+}
+
+function animateCounter(el, target, duration = 1600) {
+  let start = 0;
+  const step = Math.ceil(target / (duration / 16));
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = start.toLocaleString() + (el.dataset.suffix || '');
+    if (start >= target) clearInterval(timer);
+  }, 16);
+}
+
+function initStats(satellites) {
+  const totalEl   = document.getElementById('stat-total');
+  const opsEl     = document.getElementById('stat-operators');
+  const activeEl  = document.getElementById('stat-active');
+  if (!totalEl || !opsEl || !activeEl) return;
+
+  const operators = new Set(satellites.map(s => s.operator)).size;
+  const active    = satellites.filter(s => s.status === 'Active').length;
+
+  const statsSection = document.getElementById('stats-section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(totalEl, satellites.length);
+        animateCounter(opsEl, operators);
+        animateCounter(activeEl, active);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  if (statsSection) observer.observe(statsSection);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  initNav();
+  initModal();
+  setPrefs({ lastVisited: 'home', visitTime: new Date().toISOString() });
+
+  const loader = document.getElementById('featured-loader');
+  const satellites = await fetchSatellites();
+
+  if (!satellites) {
+    if (loader) loader.innerHTML = '<p class="error-msg">Could not load satellite data. Please try again later.</p>';
     return;
   }
-  
-  const cards = items.map(sat => createSatelliteCard(sat)).join('');
-  featuredGrid.innerHTML = cards;
-  
-  // Add click handlers for cards
-  featuredGrid.querySelectorAll('.sat-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = parseInt(card.dataset.id, 10);
-      const sat = items.find(s => s.id === id);
-      if (sat) showModal(sat, modalContainer);
-    });
-  });
-}
 
-/**
- * Update statistics display
- * @param {Array} satellites - Array of satellite objects
- */
-function updateStats(satellites) {
-  if (!satellites.length) return;
-  
-  const stats = getSatelliteStats(satellites);
-  
-  // Animate number counting
-  if (statTotal) animateNumber(statTotal, 0, stats.total);
-  if (statOperators) animateNumber(statOperators, 0, stats.operators);
-  if (statActive) animateNumber(statActive, 0, stats.active);
-}
-
-/**
- * Animate number counting
- * @param {HTMLElement} element - Element to update
- * @param {number} start - Start value
- * @param {number} end - End value
- * @param {number} duration - Animation duration in ms
- */
-function animateNumber(element, start, end, duration = 1000) {
-  if (!element) return;
-  
-  const startTime = performance.now();
-  const suffix = element.dataset.suffix || '';
-  
-  function update(currentTime) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    
-    // Ease out cubic
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(start + (end - start) * eased);
-    
-    element.textContent = current + suffix;
-    
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    }
-  }
-  
-  requestAnimationFrame(update);
-}
-
-/**
- * Initialize home page
- */
-async function initHome() {
-  try {
-    // Show loader
-    if (featuredLoader) featuredLoader.style.display = 'block';
-    
-    // Load data
-    const satellites = await fetchSatellites();
-    
-    // Update stats
-    updateStats(satellites);
-    
-    // Get featured satellites
-    const featured = satellites.filter(sat => FEATURED_IDS.includes(sat.id));
-    
-    // Render featured
-    renderFeatured(featured);
-    
-    // Hide loader
-    if (featuredLoader) featuredLoader.style.display = 'none';
-    
-  } catch (error) {
-    console.error('Error initializing home page:', error);
-    if (featuredLoader) {
-      featuredLoader.innerHTML = `
-        <div class="error-msg">
-          <strong>Error loading satellite data:</strong> ${error.message}
-        </div>
-      `;
-    }
-  }
-}
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', initHome);
+  if (loader) loader.remove();
+  renderFeatured(satellites);
+  initStats(satellites);
+});

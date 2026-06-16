@@ -1,55 +1,31 @@
-// js/nav.js - Navigation menu functionality
+// nav.js – Hamburger navigation + wayfinding
+// ES Module
 
-/**
- * Initialize navigation menu
- */
 export function initNav() {
   const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  
-  if (!toggle || !navLinks) return;
-  
-  // Toggle menu on button click
-  toggle.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', !isOpen);
-    toggle.classList.toggle('open');
-    navLinks.classList.toggle('open');
-  });
-  
-  // Close menu when clicking a link
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.classList.remove('open');
-      navLinks.classList.remove('open');
+  const links  = document.querySelector('.nav-links');
+
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
     });
-  });
-  
-  // Close menu on outside click
-  document.addEventListener('click', (e) => {
-    const header = document.querySelector('.site-header');
-    if (header && !header.contains(e.target)) {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.classList.remove('open');
-      navLinks.classList.remove('open');
-    }
-  });
-  
-  // Handle escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.classList.remove('open');
-      navLinks.classList.remove('open');
-    }
-  });
-  
-  // Set current page in navigation
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Wayfinding: mark the active page link
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  navLinks.querySelectorAll('a').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    const linkPath = link.getAttribute('href');
+    if (linkPath === currentPath || (currentPath === '' && linkPath === 'index.html')) {
       link.setAttribute('aria-current', 'page');
     }
   });
